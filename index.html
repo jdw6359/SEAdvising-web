@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/app.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="sea">
+  <body ng-app="sea" ng-controller="ApplicationController as application_ctrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -46,7 +46,10 @@
     </div>
 
     <div class="container-fluid">
-      <sea-Login></sea-Login>
+      <sea-Login test-name="application_ctrl.testName"
+              test-click="application_ctrl.testClick"
+              set-current-user="application_ctrl.setCurrentUser">
+      </sea-Login>
       <div ng-view=""></div>
     </div>
 

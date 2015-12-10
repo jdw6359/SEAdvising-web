@@ -3,12 +3,11 @@
 //currently no need to inject anything
 //Session.$inject = [];
 function Session(){
-	this.create = function(authToken, userId, userRole){
+	this.create = function(authToken, userRole){
 
 		console.log("session service create invoked");
 
 		this.authToken = authToken;
-		this.userId = userId;
 		this.userRole = userRole;
 	};
 	this.destroy = function(){
@@ -16,7 +15,6 @@ function Session(){
 		console.log("session service destroy invoked");
 
 		this.authToken = null;
-		this.userId = null;
 		this.userRole = null
 	}
 }

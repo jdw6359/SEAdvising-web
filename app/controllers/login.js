@@ -1,8 +1,8 @@
 'use strict';
 
-LoginController.$inject = ['$scope', '$rootScope', 'AUTH_EVENTS', 'AuthService'];
-function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
-	
+LoginController.$inject = ['$rootScope', 'AUTH_EVENTS', 'AuthService'];
+function LoginController($rootScope, AUTH_EVENTS, AuthService){
+
 	var vm = this;
 
 	vm.credentials = {
@@ -10,15 +10,13 @@ function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
 		password: ""
 	}
 
-	vm.login = function(){
-		console.log("Login Button Pressed");
-
-		AuthService.login(vm.credentials).then(function(user){
+	vm.login = function(credentials){
+		AuthService.login(credentials).then(function(user){
 			
 			console.log("auth service returned successful in login.js");
 
 			$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-			$scope.setCurrentUser(user);
+			vm.setCurrentUser(user);
 		}, function(){
 
 			console.log("auth service returned failure in login.js");

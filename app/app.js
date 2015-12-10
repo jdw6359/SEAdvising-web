@@ -35,7 +35,7 @@ angular
     advisor: 'advisor',
     worker: 'worker'
   })
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'app/views/main.html',
@@ -50,8 +50,15 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
 
+      $httpProvider.defaults.useXDomain = true;
+      // change this when authentication is added (below)
+      $httpProvider.defaults.withCredentials = false;                       // change this later!!!!!!!!!!!!
+      // change this when authentication is added (above)
+      delete $httpProvider.defaults.headers.common["X-Requested-With"];
+      $httpProvider.defaults.headers.common["Accept"] = "application/json";
+      $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+  });
 require('./controllers');
 require('./directives');
 require('./filters');

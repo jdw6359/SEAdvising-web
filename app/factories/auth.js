@@ -12,15 +12,18 @@ function AuthService($http, Session, BASE_URL){
 		return $http
 			.post(BASE_URL + '/sessions', credentials)
 			.then(function(res){
-				Session.create(res.data.auth_token, 
-					res.data.user.id,
-					res.data.user.role);
+
+				console.log("session http response: ");
+				console.log(res);
+
+				Session.create(res.data.auth_token,
+					res.data.user.type);
 				return res.data.user;
 			});
 	};
 
 	authService.isAuthenticated = function(){
-		return !!Session.userId;
+		return !!Session.auth_token;
 	}
 
 	authService.isAuthorized = function(authorizedRoles){
