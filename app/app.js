@@ -8,13 +8,13 @@
  *
  * Main module of the application.
  */
-
+global.jQuery = require('jquery')
 var angular = require('angular');
 
 require('bootstrap');
 
 angular
-  .module('seadvisingApp', [
+  .module('seadvising', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
