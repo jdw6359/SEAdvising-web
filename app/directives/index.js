@@ -1,3 +1,5 @@
 'use strict';
 
-var app = require('angular').module('seadvising');
+var app = require('angular').module('sea');
+
+app.directive('seaLogin',require('./login.js'));

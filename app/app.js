@@ -14,7 +14,7 @@ var angular = require('angular');
 require('bootstrap');
 
 angular
-  .module('seadvising', [
+  .module('sea', [
     require('angular-animate'),
     require('angular-cookies'),
     require('angular-resource'),
@@ -42,4 +42,3 @@ angular
 require('./controllers')
 require('./directives')
 require('./filters')
-require('./services')
