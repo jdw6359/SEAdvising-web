@@ -22,6 +22,19 @@ angular
     require('angular-touch')
   ])
   .constant('BASE_API_ENDPOINT', 'http://localhost:3000/api/v1')
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
+  .constant('USER_ROLES', {
+    all: '*',
+    advisor: 'advisor',
+    worker: 'worker'
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -39,6 +52,8 @@ angular
       });
   });
 
-require('./controllers')
-require('./directives')
-require('./filters')
+require('./controllers');
+require('./directives');
+require('./filters');
+require('./services');
+require('./factories');

@@ -2,4 +2,4 @@
 
 var app = require('angular').module('sea');
 
-app.service('Session',require('./session.js'));
+app.factory('AuthService',require('./auth.js'));
