@@ -1,7 +1,9 @@
 'use strict';
 
-LoginController.$inject = ['$rootScope', 'AUTH_EVENTS', 'AuthService'];
-function LoginController($rootScope, AUTH_EVENTS, AuthService){
+LoginController.$inject = ['$scope', '$rootScope', 'AUTH_EVENTS', 'AuthService'];
+function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
+
+	console.log("scope test name: " + $scope.testName)
 
 	var vm = this;
 
@@ -16,7 +18,7 @@ function LoginController($rootScope, AUTH_EVENTS, AuthService){
 			console.log("auth service returned successful in login.js");
 
 			$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-			vm.setCurrentUser(user);
+			$scope.setCurrentUser(user);
 		}, function(){
 
 			console.log("auth service returned failure in login.js");

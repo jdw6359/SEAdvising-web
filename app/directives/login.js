@@ -2,10 +2,7 @@ function LoginDirective() {
     return {
         templateUrl: 'app/templates/login.html',
         restrict: 'E',
-        scope: {},
-        bindToController: {
-        	setCurrentUser: '='
-        },
+        transclude: true,
         controller: 'LoginController',
         controllerAs: 'login_ctrl'
     };

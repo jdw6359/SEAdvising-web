@@ -4,15 +4,13 @@ ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthService'];
 function ApplicationController($scope, USER_ROLES, AuthService){
 	console.log("Application Controller Loaded");
 
-	var vm = this;
+	$scope.currentUser = null;
+	$scope.userRoles = USER_ROLES;
+	$scope.isAuthorized = AuthService.isAuthorized;
 
-	vm.currentUser = null;
-	vm.userRoles = USER_ROLES;
-	vm.isAuthorized = AuthService.isAuthorized;
-
-	this.setCurrentUser = function(user){
+	$scope.setCurrentUser = function(user){
 		console.log("set current user invoked");
-		vm.currentUser = user;
+		$scope.currentUser = user;
 	};
 };
 
