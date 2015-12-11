@@ -20,46 +20,55 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+    <div ng-if="currentUser" class="header">
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">seadvising</a>
+            <a href="#/">
+              <img class="header-logo" src="img/logo.jpg" />
+            </a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
+          <div class="collapse navbar-collapse"
+              id="js-navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
+              <li ng-if="isAuthorized(userRoles.advisor)">
+                <a href="#/admin">Admin</a>
+              </li>
+              <li ng-if="isAuthorized(userRoles.worker)">
+                <a href="#/worker">Worker</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown" ng-show="currentUser" ng-cloak>
+                <a class="dropdown-toggle" data-toggle="dropdown"
+                    role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    {{currentUser.last_name}},
+                    {{currentUser.first_name}}
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <p ng-if="currentUser">Welcome Current User: {{currentUser.first_name}}</p>
-    <p ng-if="isAuthorized(userRoles.advisor)">You are an advisor</p>
-    <p ng-if="isAuthorized(userRoles.worker)">You are a student worker</p>
-
     <div class="container-fluid">
-      <sea-Login test-name="application_ctrl.testName"
-              test-click="application_ctrl.testClick"
-              set-current-user="application_ctrl.setCurrentUser">
+      <sea-Login ng-if="!currentUser">
       </sea-Login>
-      <div ng-view=""></div>
+      <div ng-if="currentUser" ng-view=""></div>
     </div>
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from Josh Woodward</p>
       </div>
     </div>
 
