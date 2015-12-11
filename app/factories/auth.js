@@ -6,27 +6,21 @@ function AuthService($http, Session, BASE_URL){
 	var authService = {};
 
 	authService.login = function(credentials){
-		console.log("login credentials: ");
-		console.log(credentials);
-
 		return $http
 			.post(BASE_URL + '/sessions', credentials)
 			.then(function(res){
-
-				console.log("session http response: ");
-				console.log(res);
-
 				Session.create(res.data.auth_token,
-					res.data.user.type);
+					res.data.user_role);
 				return res.data.user;
 			});
 	};
 
 	authService.isAuthenticated = function(){
-		return !!Session.auth_token;
+		return !!Session.authToken;
 	}
 
 	authService.isAuthorized = function(authorizedRoles){
+		
 		if(!angular.isArray(authorizedRoles)){
 			authorizedRoles = [authorizedRoles];
 		}

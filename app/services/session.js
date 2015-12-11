@@ -6,6 +6,8 @@ function Session(){
 	this.create = function(authToken, userRole){
 
 		console.log("session service create invoked");
+		console.log("Session user role: ");
+		console.log(userRole);
 
 		this.authToken = authToken;
 		this.userRole = userRole;

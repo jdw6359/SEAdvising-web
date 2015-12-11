@@ -45,6 +45,10 @@
       </div>
     </div>
 
+    <p ng-if="currentUser">Welcome Current User: {{currentUser.first_name}}</p>
+    <p ng-if="isAuthorized(userRoles.advisor)">You are an advisor</p>
+    <p ng-if="isAuthorized(userRoles.worker)">You are a student worker</p>
+
     <div class="container-fluid">
       <sea-Login test-name="application_ctrl.testName"
               test-click="application_ctrl.testClick"

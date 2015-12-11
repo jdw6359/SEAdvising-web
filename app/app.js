@@ -32,8 +32,8 @@ angular
   })
   .constant('USER_ROLES', {
     all: '*',
-    advisor: 'advisor',
-    worker: 'worker'
+    advisor: 'Advisor',
+    worker: 'Worker'
   })
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider
