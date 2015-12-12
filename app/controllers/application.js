@@ -6,6 +6,7 @@ function ApplicationController($scope, USER_ROLES, AuthService){
 
 	$scope.currentUser = null;
 	$scope.userRoles = USER_ROLES;
+	$scope.authToken = AuthService.authToken;
 	$scope.isAuthorized = AuthService.isAuthorized;
 
 	$scope.setCurrentUser = function(user){

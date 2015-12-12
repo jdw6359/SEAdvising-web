@@ -42,6 +42,11 @@ angular
         controller: 'MainController',
         controllerAs: 'main_ctrl'
       })
+      .when('/students',{
+        templateUrl: 'app/views/student.html',
+        controller: 'StudentController',
+        controllerAs: 'student_ctrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -54,6 +59,7 @@ angular
       $httpProvider.defaults.headers.common["Accept"] = "application/json";
       $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
   });
+  
 require('./controllers');
 require('./directives');
 require('./filters');

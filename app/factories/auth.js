@@ -5,6 +5,10 @@ function AuthService($http, Session, BASE_URL){
 	
 	var authService = {};
 
+	authService.authToken = function(){
+		return Session.authToken;
+	};
+
 	authService.login = function(credentials){
 		return $http
 			.post(BASE_URL + '/sessions', credentials)
