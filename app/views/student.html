@@ -1,9 +1,43 @@
 <div class="container">
-	<h2>Student Listing</h2>
+	<div class="page-header">
+		<h1>Student Detail</h1>
+	</div>
 
-	<p ng-repeat="student in student_ctrl.students">
-		FirstName: {{student.first_name}}
-		LastName: {{student.last_name}}
-	</p>
-
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>
+				{{student_ctrl.student.last_name}},
+				{{student_ctrl.student.first_name}}
+			</strong>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<p>There will be some student details here!</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							Application Domain
+						</div>
+						<div class="panel-body">
+							<p>Application domain content here</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							Senior Project
+						</div>
+						<div class="panel-body">
+							<p>Senior project information here</p>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
 </div>

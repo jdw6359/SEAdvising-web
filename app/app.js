@@ -43,9 +43,14 @@ angular
         controllerAs: 'main_ctrl'
       })
       .when('/students',{
+        templateUrl: 'app/views/student_list.html',
+        controller: 'StudentListController',
+        controllerAs: 'student_list_ctrl'
+      })
+      .when('/students/:id',{
         templateUrl: 'app/views/student.html',
         controller: 'StudentController',
-        controllerAs: 'student_ctrl'
+        controllerAs: 'student_ctrl' 
       })
       .otherwise({
         redirectTo: '/'
