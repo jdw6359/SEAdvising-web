@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc overview
- * @name seadvisingApp
+ * @name sea
  * @description
  * # seadvisingApp
  *
@@ -41,6 +41,21 @@ angular
         templateUrl: 'app/views/main.html',
         controller: 'MainController',
         controllerAs: 'main_ctrl'
+      })
+      .when('/login', {
+        templateUrl: 'app/views/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login_ctrl'
+      })
+      .when('/email_verification',{
+        templateUrl: 'app/views/email_verification.html',
+        controller: 'EmailVerificationController', 
+        controllerAs: 'email_verification_ctrl'
+      })
+      .when('/password_reset/:id',{
+        templateUrl: 'app/views/password_reset.html',
+        controller: 'PasswordResetController',
+        controllerAs: 'password_reset_ctrl'
       })
       .when('/students',{
         templateUrl: 'app/views/student_list.html',

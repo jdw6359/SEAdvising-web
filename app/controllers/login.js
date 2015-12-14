@@ -1,7 +1,7 @@
 'use strict';
 
-LoginController.$inject = ['$scope', '$rootScope', 'AUTH_EVENTS', 'AuthService'];
-function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
+LoginController.$inject = ['$scope', '$rootScope', '$location', 'AUTH_EVENTS', 'AuthService'];
+function LoginController($scope, $rootScope, $location, AUTH_EVENTS, AuthService){
 
 	console.log("scope test name: " + $scope.testName)
 
@@ -19,6 +19,9 @@ function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
 
 			$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 			$scope.setCurrentUser(user);
+
+			//TODO: Refactor this hardcoded redirection
+			$location.path('/')
 		}, function(){
 
 			console.log("auth service returned failure in login.js");
