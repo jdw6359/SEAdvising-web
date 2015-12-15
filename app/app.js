@@ -62,6 +62,11 @@ angular
         controller: 'StudentListController',
         controllerAs: 'student_list_ctrl'
       })
+      .when('/students/new/',{
+        templateUrl: 'app/views/student_new.html',
+        controller: 'StudentNewController',
+        controllerAs: 'student_new_ctrl'
+      })
       .when('/students/:id',{
         templateUrl: 'app/views/student.html',
         controller: 'StudentController',
