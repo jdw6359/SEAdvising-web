@@ -1,3 +1,58 @@
 <div class="container">
-	<h1>New Student Form</h1>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h1>New Student Form</h1>
+			<p>New Student: {{student_new_ctrl.student}}</p>
+			<form name="newStudentForm" ng-submit="student_new_ctrl.submit()">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="firstName">First Name:</label>
+						<input type="text"
+							id="firstName"
+							class="form-control"
+							ng-model="student_new_ctrl.student.first_name" />
+					</div>
+					<div class="form-group col-md-2">
+						<label for="middleName">Middle Initial:</label>
+						<input type="text"
+							id="middleName"
+							class="form-control"
+							ng-model="student_new_ctrl.student.middle_name" />
+					</div>
+					<div class="form-group col-md-6">
+						<label for="lastName">Last Name:</label>
+						<input type="text"
+							id="lastName"
+							class="form-control"
+							ng-model="student_new_ctrl.student.last_name" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="email">Email:</label>
+						<input type="text"
+							id="email"
+							class="form-control"
+							ng-model="student_new_ctrl.student.email"
+							placeholder="email@rit.edu" />
+					</div>
+					<div class="form-group col-md-6">
+						<label for="advisor">Advisor:</label>
+						<select id="advisor"
+							class="form-control"
+							ng-model="student_new_ctrl.student.advisor_id"
+							ng-options="advisor.id as advisor.first_name + ' ' +  advisor.last_name for
+							advisor in student_new_ctrl.advisors" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<button class="btn btn-primary btn-block">
+							Submit
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
