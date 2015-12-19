@@ -1,34 +1,28 @@
-<div class="container">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<strong>
-				Students
-			</strong>
-		</div>
-		<table class="table table-striped table-hover table-responsive">
-			<thead>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>Advisor</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="student in student_list_ctrl.students">
-					<td>{{student.first_name}}</td>
-					<td>{{student.last_name}}</td>
-					<td>{{student.email}}</td>
-					<td>{{student.advisor}}</td>
-					<td>
-						<button class="btn btn-primary" 
-								ng-click="student_list_ctrl.goto(student.id)">
-							Details
-						</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+<table class="table striped">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Advisor</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="student in student_list_ctrl.students">
+			<td>{{student.first_name}}</td>
+			<td>{{student.last_name}}</td>
+			<td>{{student.email}}</td>
+			<td>
+				{{student.advisor.first_name}}
+				{{student.advisor.last_name}}
+			</td>
+			<td>
+				<button class="btn btn-primary" 
+						ng-click="student_list_ctrl.goto(student.id)">
+					Details
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
