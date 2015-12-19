@@ -33,42 +33,67 @@ angular
     advisor: 'Advisor',
     worker: 'Worker'
   })
-  .config(function ($routeProvider, $httpProvider) {
+  .config(function ($routeProvider, $httpProvider, USER_ROLES) {
     $routeProvider
       .when('/', {
         templateUrl: 'app/views/main.html',
         controller: 'MainController',
-        controllerAs: 'main_ctrl'
+        controllerAs: 'main_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
       })
       .when('/login', {
         templateUrl: 'app/views/login.html',
         controller: 'LoginController',
-        controllerAs: 'login_ctrl'
+        controllerAs: 'login_ctrl',
+        data: {
+          requiresAuthentication: false
+        }
       })
       .when('/email_verification',{
         templateUrl: 'app/views/email_verification.html',
         controller: 'EmailVerificationController', 
-        controllerAs: 'email_verification_ctrl'
+        controllerAs: 'email_verification_ctrl',
+        data: {
+          requiresAuthentication: false
+        }
       })
       .when('/password_reset/:id',{
         templateUrl: 'app/views/password_reset.html',
         controller: 'PasswordResetController',
-        controllerAs: 'password_reset_ctrl'
+        controllerAs: 'password_reset_ctrl',
+        data: {
+          requiresAuthentication: false
+        }
       })
+      .when('/students/new',{
+        templateUrl: 'app/views/student_new.html',
+        controller: 'StudentNewController',
+        controllerAs: 'student_new_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })      
       .when('/students',{
         templateUrl: 'app/views/student_list.html',
         controller: 'StudentListController',
-        controllerAs: 'student_list_ctrl'
-      })
-      .when('/students/new/',{
-        templateUrl: 'app/views/student_new.html',
-        controller: 'StudentNewController',
-        controllerAs: 'student_new_ctrl'
+        controllerAs: 'student_list_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
       })
       .when('/students/:id',{
         templateUrl: 'app/views/student.html',
         controller: 'StudentController',
-        controllerAs: 'student_ctrl' 
+        controllerAs: 'student_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        } 
       })
       .otherwise({
         redirectTo: '/'
@@ -81,6 +106,37 @@ angular
       delete $httpProvider.defaults.headers.common["X-Requested-With"];
       $httpProvider.defaults.headers.common["Accept"] = "application/json";
       $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+  })
+  .run(function($rootScope, $location, AuthService){
+    $rootScope.$on('$routeChangeStart', function(event, next){
+      console.log("route change start!!");
+
+      console.log("event");
+      console.log(event);
+
+      console.log("next.data");
+      console.log(next);
+
+      var requiresAuthentication = next.data.requiresAuthentication;
+      var authorizedRoles = next.data.authorizedRoles;
+      
+      if(requiresAuthentication){
+        if(!AuthService.isAuthorized(authorizedRoles)){
+          event.preventDefault();
+          if(AuthService.isAuthenticated()){
+            //user's role is not authorized to access route
+            console.log("user role not authorized to access route");
+            $location.path('/');
+            //$rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+          } else {
+            //user is not logged in
+            console.log("user not logged in, rerouting to login page");
+            $location.path('/login');
+            //$rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);            
+          }
+        }
+      }
+    })
   });
   
 require('./controllers');
