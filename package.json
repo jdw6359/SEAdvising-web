@@ -2,6 +2,7 @@
   "name": "SE-Advising",
   "version": "1.0.0",
   "description": "Frontend of the RIT SE Advising Application",
+  "license": "MIT",
   "repository": "git@github.com:jdw6359/SEAdvising-web",
   "devDependencies": {
     "browserify": "^12.0.1",
@@ -25,9 +26,9 @@
     "angular-route": "^1.4.7",
     "angular-touch": "^1.4.7",
     "angular-ui-mask": "^1.6.1",
-    "bootstrap": "^3.3.5",
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.4",
+    "materialize-css": "^0.97.3",
     "rangy": "^1.3.0",
     "textangular": "^1.4.6"
   },
