@@ -1,11 +1,8 @@
 'use strict';
 
 //TODO: Remove $http from injection
-StudentListController.$inject = ['$scope', '$location', '$http', 'StudentFactory'];
-function StudentListController($scope, $location, $http, StudentFactory){
-
-	//TODO: Move this to request interceptor
-    $http.defaults.headers.common["Auth-Token"] = $scope.authToken;
+StudentListController.$inject = ['$location', '$http', 'StudentFactory'];
+function StudentListController($location, $http, StudentFactory){
 
 	var vm = this;
 

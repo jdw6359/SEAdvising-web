@@ -1,11 +1,8 @@
 'use strict';
 
 //TODO: Remove $http from injection
-StudentController.$inject = ['$scope', '$routeParams', '$http', 'StudentFactory'];
-function StudentController($scope, $routeParams, $http, StudentFactory){
-
-	//TODO: Move this to request interceptor
-    $http.defaults.headers.common["Auth-Token"] = $scope.authToken;
+StudentController.$inject = ['$routeParams', '$http', 'StudentFactory'];
+function StudentController($routeParams, $http, StudentFactory){
 
 
     //Request the specific student record

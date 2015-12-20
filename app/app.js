@@ -107,15 +107,8 @@ angular
       $httpProvider.defaults.headers.common["Accept"] = "application/json";
       $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
   })
-  .run(function($rootScope, $location, AuthService){
+  .run(function($rootScope, $http, $cookies, $location, AuthService){
     $rootScope.$on('$routeChangeStart', function(event, next){
-      console.log("route change start!!");
-
-      console.log("event");
-      console.log(event);
-
-      console.log("next.data");
-      console.log(next);
 
       var requiresAuthentication = next.data.requiresAuthentication;
       var authorizedRoles = next.data.authorizedRoles;
@@ -125,17 +118,19 @@ angular
           event.preventDefault();
           if(AuthService.isAuthenticated()){
             //user's role is not authorized to access route
-            console.log("user role not authorized to access route");
             $location.path('/');
-            //$rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
           } else {
             //user is not logged in
-            console.log("user not logged in, rerouting to login page");
-            $location.path('/login');
-            //$rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);            
+            $location.path('/login');            
           }
         }
       }
+
+      console.log("setting http header");
+      $http.defaults.headers.common["Auth-Token"] = $cookies.get("authToken");
+      console.log("header: " + $http.defaults.headers.common["Auth-Token"]);
+      console.log("done setting http header");
+
     })
   });
   

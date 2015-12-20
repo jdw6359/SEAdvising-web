@@ -1,11 +1,8 @@
 'use-strict'
 
-StudentNewController.$inject = ['$http', '$scope', '$location', 'StudentFactory', 'AdvisorFactory'];
+StudentNewController.$inject = ['$http', '$location', 'StudentFactory', 'AdvisorFactory'];
 
-function StudentNewController($http, $scope, $location, StudentFactory, AdvisorFactory){
-
-	//TODO: Move this to request interceptor
-    $http.defaults.headers.common["Auth-Token"] = $scope.authToken;
+function StudentNewController($http, $location, StudentFactory, AdvisorFactory){
 
 	var vm = this;
 

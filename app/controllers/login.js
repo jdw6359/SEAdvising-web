@@ -17,7 +17,6 @@ function LoginController($scope, $rootScope, $location, AUTH_EVENTS, AuthService
 			
 			console.log("auth service returned successful in login.js");
 
-			$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 			$scope.setCurrentUser(user);
 
 			//TODO: Refactor this hardcoded redirection
@@ -25,8 +24,7 @@ function LoginController($scope, $rootScope, $location, AUTH_EVENTS, AuthService
 		}, function(){
 
 			console.log("auth service returned failure in login.js");
-
-			$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+			//TODO: refactor into hardcoded redirection
 		});
 	};
 }

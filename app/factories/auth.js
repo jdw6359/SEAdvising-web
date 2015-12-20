@@ -9,6 +9,19 @@ function AuthService($http, Session, BASE_URL){
 		return Session.authToken;
 	};
 
+
+	//TODO: do not include auth_token as parameter, 
+	//rely on global http header assignment
+	authService.restore = function(authToken){
+		return $http
+			.post(BASE_URL + '/sessions/restore', {'authToken': authToken})
+			.then(function(res){
+				Session.create(res.data.auth_token,
+					res.data.user_role);
+				return res.data.user
+			});
+	}
+
 	authService.login = function(credentials){
 		return $http
 			.post(BASE_URL + '/sessions', credentials)
