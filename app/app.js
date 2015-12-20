@@ -17,7 +17,8 @@ angular
     require('angular-cookies'),
     require('angular-resource'),
     require('angular-route'),
-    require('angular-touch')
+    require('angular-touch'),
+    require('angular-loading-bar')
   ])
   .constant('BASE_API_ENDPOINT', 'http://localhost:3000/api/v1')
   .constant('AUTH_EVENTS', {
