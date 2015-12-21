@@ -16,7 +16,10 @@
 					<p>Email: {{student_ctrl.student.email}}</p>
 				</div>
 				<div class="col-md-3">
-					<p>Advisor: {{student_ctrl.student.advisor}}</p>
+					<p>
+						Advisor: {{student_ctrl.student.advisor.first_name}}
+								 {{student_ctrl.student.advisor.last_name}}
+					</p>
 				</div>
 				<div class="col-md-3">
 					<p>Status: {{student_ctrl.student.student_type}}</p>
