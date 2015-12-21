@@ -35,6 +35,10 @@ function ApplicationController($scope, $cookies, $location, USER_ROLES, AuthServ
 		console.log("set current user invoked");
 		$scope.currentUser = user;
 	};
+
+	$scope.logout = function(){
+		console.log("logging out");
+	}
 };
 
 module.exports = ApplicationController;

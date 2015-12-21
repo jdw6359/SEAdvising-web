@@ -41,22 +41,19 @@
               <li>
                 <a href="#/students">Students</a>
               </li>
-              <li>
-                <a href="#/students/new">New Student</a>
-              </li>
             </ul>
             <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
               <li class="dropdown" ng-show="currentUser" ng-cloak>
                 <a class="dropdown-toggle" data-toggle="dropdown"
                     role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    {{currentUser.last_name}},
                     {{currentUser.first_name}}
+                    {{currentUser.last_name}}
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#/logout">Logout</a>
+                    <a ng-click="logout()">Logout</a>
                   </li>
                 </ul>
               </li>
