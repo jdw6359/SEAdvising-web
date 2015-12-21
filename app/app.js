@@ -11,6 +11,8 @@
 global.jQuery = require('jquery')
 var angular = require('angular');
 
+require('bootstrap');
+
 angular
   .module('sea', [
     require('angular-animate'),
