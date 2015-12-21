@@ -36,7 +36,10 @@
 					<p>Expected Graduation: {{student_ctrl.student.expected_graduation}}</p>
 				</div>
 				<div class="col-md-3">
-					<p>Last Audit: {{student_ctrl.student.last_audit}}</p>
+					<p>
+						Last Audit: {{student_ctrl.student.last_audit | 
+							date: "MM/dd/yyyy"}}
+					</p>
 				</div>
 				<div class="col-md-3">
 					<p>Year Level: {{student_ctrl.student.year_level}}</p>
