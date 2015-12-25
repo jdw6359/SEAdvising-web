@@ -42,7 +42,7 @@
 					</p>
 				</div>
 				<div class="col-md-3">
-					<p>Year Level: {{student_ctrl.student.year_level}}</p>
+					<p>Test</p>
 				</div>				
 			</div>
 
@@ -50,7 +50,13 @@
 				<div class="col-md-6">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							Co-Op
+							Co-Op	
+							<a class="btn btn-success pull-right"
+								ng-click="student_ctrl.new_coop()">
+								<span class="glyphicon glyphicon-plus"></span>
+								Add
+							</a>
+							<div class="clearfix"></div>
 						</div>
 						<div class="panel-body">
 							<p> Co Op Information Here</p>
@@ -60,10 +66,10 @@
 				<div class="col-md-6">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							Co-Op
+							Immersion
 						</div>
 						<div class="panel-body">
-							<p> Co Op Information Here</p>
+							<p>Immersion Info Here</p>
 						</div>
 					</div>
 				</div>								

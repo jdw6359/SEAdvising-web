@@ -6,9 +6,15 @@ function StudentNewController($http, $location, StudentFactory, AdvisorFactory){
 
 	var vm = this;
 
-	vm.student = {};
-	vm.advisors = AdvisorFactory.query();
+	vm.student = {
+		com_sub_plan: false,
+		status: "Active",
+		student_type: "FR" 
+	};
+	vm.student_types = ["FR", "TR"];
+	vm.student_statuses = ["Active", "Inactive", "COP", "Suspended", "CRP", "LOA"];
 
+	vm.advisors = AdvisorFactory.query();
 
 	vm.submit = function(){
 
