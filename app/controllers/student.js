@@ -9,19 +9,10 @@ StudentController.$inject = ['$scope',
 function StudentController($scope, $routeParams, $uibModal,
 	CoopFactory, StudentFactory){
 
-    $scope.refresh = function(){
-    	vm.student = StudentFactory.get({id: $routeParams.id});
-    	vm.student.$promise.then(function(student){
-    		vm.coops = student.coops;
-    	})
-    }
-
     var vm = this;
-    $scope.refresh();
+    vm.student = StudentFactory.get({id: $routeParams.id});
 
     vm.add_coop = function(){
-    	console.log("add coop clicked");
-
     	vm.coopModalInstance = $uibModal.open({
     		templateUrl: 'app/templates/modals/coop.html',
     		controller: 'CoopModalController',
@@ -31,17 +22,17 @@ function StudentController($scope, $routeParams, $uibModal,
     }
 
     vm.remove_coop = function(coop){
-    	console.log("remove coop clicked");
-
     	var remove = confirm("Are you sure you would like to remove the coop at " + coop.company_name + "?");
     	if(remove){
     		CoopFactory.remove({id:coop.id}, function(res){
                 $scope.refresh();
             });
     	}
-
     }
 
+    $scope.refresh = function(){
+        vm.student = StudentFactory.get({id: $routeParams.id});
+    }
 }
 
 module.exports = StudentController;

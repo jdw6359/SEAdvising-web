@@ -3,8 +3,6 @@
 		<h1>Student Detail</h1>
 	</div>
 	<p>Student: {{student_ctrl.student}}</p>
-	<hr/>
-	<p>Coops: {{student_ctrl.coops}}</p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<strong>
@@ -39,40 +37,14 @@
 				</div>
 				<div class="col-md-3">
 					<p>
-						Last Audit: {{student_ctrl.student.last_audit | 
-							date: "MM/dd/yyyy"}}
+						Placeholder Field
 					</p>
 				</div>
 				<div class="col-md-3">
-					<p>Test</p>
+					<p>
+						Placeholder Field
+					</p>
 				</div>				
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						Co-Op	
-						<a class="btn btn-success pull-right"
-							ng-click="student_ctrl.add_coop()">
-							<span class="glyphicon glyphicon-plus"></span>
-							Add
-						</a>
-						<div class="clearfix"></div>
-					</div>
-					<div class="panel-body">
-						<ul class="list-group">
-							<li class="list-group-item"
-								ng-repeat="coop in student_ctrl.coops">
-								<p>{{coop.company_name}}
-									<button type="button" 
-									class="btn btn-sm btn-danger pull-right"
-									ng-click="student_ctrl.remove_coop(coop)">
-									Delete
-									</button>
-								</p>
-							</li>
-						</ul>
-					</div>
-				</div>
 			</div>
 			<div class="col-md-6"
 				ng-if="student_ctrl.student.cop_in">
@@ -85,8 +57,68 @@
 						<p><b>Effective Term:</b>{{student_ctrl.student.cop_in_effective_term}}</p>
 					</div>
 				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Audit History
+					</div>
+					<div class="panel-body">
+						<i ng-show="!student_ctrl.student.audits.length">
+							This student does not have an audit history
+						</i>
+						<ul class="list-group">
+							<li class="list-group-item row"
+								ng-repeat="audit in 
+								(filteredItems = (student_ctrl.student.audits | orderBy: 'date_performed':true))">
+								<div class="col-md-4">
+									<p>
+										<b>Date Performed:</b>
+										{{audit.date_performed |
+										date: "MM/dd/yyyy"}}
+									</p>
+								</div>
+								<div class="col-md-8">
+									<p>
+										<b>Comments:</b>
+										{{audit.comment}}
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>								
-
+			<div class="col-md-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Co-Op	
+						<a class="btn btn-success pull-right"
+							ng-click="student_ctrl.add_coop()">
+							<span class="glyphicon glyphicon-plus"></span>
+							Add
+						</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="panel-body">
+						<i ng-show="!student_ctrl.student.coops.length">
+							This student has not registered any co-ops
+						</i>
+						<ul class="list-group">
+							<li class="list-group-item"
+								ng-repeat="coop in student_ctrl.student.coops">
+								<p>{{coop.company_name}}
+									<button type="button" 
+									class="btn btn-sm btn-danger pull-right"
+									ng-click="student_ctrl.remove_coop(coop)">
+									Delete
+									</button>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<div class="col-md-6">
 				<div class="panel panel-info">
 					<div class="panel-heading">
