@@ -47,69 +47,76 @@
 					<p>Test</p>
 				</div>				
 			</div>
-
-			<div class="row">
-				<div class="col-md-6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							Co-Op	
-							<a class="btn btn-success pull-right"
-								ng-click="student_ctrl.add_coop()">
-								<span class="glyphicon glyphicon-plus"></span>
-								Add
-							</a>
-							<div class="clearfix"></div>
-						</div>
-						<div class="panel-body">
-							<ul class="list-group">
-								<li class="list-group-item"
-									ng-repeat="coop in student_ctrl.coops">
-									<p>{{coop.company_name}}
-										<button type="button" 
-										class="btn btn-sm btn-danger pull-right"
-										ng-click="student_ctrl.remove_coop(coop)">
-										Delete
-										</button>
-									</p>
-								</li>
-							</ul>
-						</div>
+			<div class="col-md-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Co-Op	
+						<a class="btn btn-success pull-right"
+							ng-click="student_ctrl.add_coop()">
+							<span class="glyphicon glyphicon-plus"></span>
+							Add
+						</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="panel-body">
+						<ul class="list-group">
+							<li class="list-group-item"
+								ng-repeat="coop in student_ctrl.coops">
+								<p>{{coop.company_name}}
+									<button type="button" 
+									class="btn btn-sm btn-danger pull-right"
+									ng-click="student_ctrl.remove_coop(coop)">
+									Delete
+									</button>
+								</p>
+							</li>
+						</ul>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							Immersion
-						</div>
-						<div class="panel-body">
-							<p>Immersion Info Here</p>
-						</div>
-					</div>
-				</div>								
 			</div>
+			<div class="col-md-6"
+				ng-if="student_ctrl.student.cop_in">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Change of Program In
+					</div>
+					<div class="panel-body">
+						<p>This student has applied for a change of program into the Software Engineering Department</p>
+						<p><b>Effective Term:</b>{{student_ctrl.student.cop_in_effective_term}}</p>
+					</div>
+				</div>
+			</div>								
 
-			<div class="row">
-				<div class="col-md-6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							Application Domain
-						</div>
-						<div class="panel-body">
-							<p>Application domain content here</p>
-						</div>
+			<div class="col-md-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Application Domain
+					</div>
+					<div class="panel-body">
+						<p>Application domain content here</p>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							Senior Project
-						</div>
-						<div class="panel-body">
-							<p>Senior project information here</p>
-						</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Senior Project
+					</div>
+					<div class="panel-body">
+						<p>Senior project information here</p>
 					</div>
 				</div>
-			</div>			
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Senior Project
+					</div>
+					<div class="panel-body">
+						<p>Senior project information here</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
