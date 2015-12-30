@@ -61,9 +61,16 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="panel-body">
-							<ul>
-								<li ng-repeat="coop in student_ctrl.coops">
-									<p>{{coop.company_name}}</p>
+							<ul class="list-group">
+								<li class="list-group-item"
+									ng-repeat="coop in student_ctrl.coops">
+									<p>{{coop.company_name}}
+										<button type="button" 
+										class="btn btn-sm btn-danger pull-right"
+										ng-click="student_ctrl.remove_coop(coop)">
+										Delete
+										</button>
+									</p>
 								</li>
 							</ul>
 						</div>

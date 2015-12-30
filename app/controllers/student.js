@@ -1,21 +1,23 @@
 'use strict';
 
 //TODO: Remove $http from injection
-StudentController.$inject = ['$scope', '$routeParams', '$uibModal', 'StudentFactory'];
-function StudentController($scope, $routeParams, $uibModal, StudentFactory){
+StudentController.$inject = ['$scope',
+	'$routeParams',
+	'$uibModal',
+	'CoopFactory',
+	'StudentFactory'];
+function StudentController($scope, $routeParams, $uibModal,
+	CoopFactory, StudentFactory){
 
-
-    //Request the specific student record
-
-    console.log("Student controller loaded for student: " + $routeParams.id);
+    $scope.refresh = function(){
+    	vm.student = StudentFactory.get({id: $routeParams.id});
+    	vm.student.$promise.then(function(student){
+    		vm.coops = student.coops;
+    	})
+    }
 
     var vm = this;
-
-    vm.student = StudentFactory.get({id: $routeParams.id});
-    vm.student.$promise.then(function(student){
-    	vm.coops = student.coops;
-    })
-
+    $scope.refresh();
 
     vm.add_coop = function(){
     	console.log("add coop clicked");
@@ -28,12 +30,18 @@ function StudentController($scope, $routeParams, $uibModal, StudentFactory){
     	});
     }
 
-    $scope.refresh = function(){
-    	vm.student = StudentFactory.get({id: $routeParams.id});
-    	vm.student.$promise.then(function(student){
-    		vm.coops = student.coops;
-    	})
+    vm.remove_coop = function(coop){
+    	console.log("remove coop clicked");
+
+    	var remove = confirm("Are you sure you would like to remove the coop at " + coop.company_name + "?");
+    	if(remove){
+    		CoopFactory.remove({id:coop.id}, function(res){
+                $scope.refresh();
+            });
+    	}
+
     }
+
 }
 
 module.exports = StudentController;
