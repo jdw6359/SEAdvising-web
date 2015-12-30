@@ -1,8 +1,8 @@
 'use strict';
 
 //TODO: Remove $http from injection
-StudentController.$inject = ['$routeParams', '$http', 'StudentFactory'];
-function StudentController($routeParams, $http, StudentFactory){
+StudentController.$inject = ['$scope', '$routeParams', '$uibModal', 'StudentFactory'];
+function StudentController($scope, $routeParams, $uibModal, StudentFactory){
 
 
     //Request the specific student record
@@ -11,17 +11,29 @@ function StudentController($routeParams, $http, StudentFactory){
 
     var vm = this;
 
-    this.student = StudentFactory.get({id: $routeParams.id});
+    vm.student = StudentFactory.get({id: $routeParams.id});
+    vm.student.$promise.then(function(student){
+    	vm.coops = student.coops;
+    })
 
-/*
-	var vm = this;
 
-	var students = StudentFactory.query();
-	students.$promise.then(function(students){
-		vm.students = students;
-	});
-*/
+    vm.add_coop = function(){
+    	console.log("add coop clicked");
 
+    	vm.coopModalInstance = $uibModal.open({
+    		templateUrl: 'app/templates/modals/coop.html',
+    		controller: 'CoopModalController',
+    		controllerAs: 'coop_modal_ctrl',
+    		scope: $scope
+    	});
+    }
+
+    $scope.refresh = function(){
+    	vm.student = StudentFactory.get({id: $routeParams.id});
+    	vm.student.$promise.then(function(student){
+    		vm.coops = student.coops;
+    	})
+    }
 }
 
 module.exports = StudentController;

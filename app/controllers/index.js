@@ -10,3 +10,5 @@ app.controller('PasswordResetController', require('./password_reset'))
 app.controller('StudentListController', require('./student_list'));
 app.controller('StudentController', require('./student'));
 app.controller('StudentNewController', require('./student_new'));
+
+app.controller('CoopModalController', require('./coop_modal'));

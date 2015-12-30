@@ -2,7 +2,9 @@
 	<div class="page-header">
 		<h1>Student Detail</h1>
 	</div>
-
+	<p>Student: {{student_ctrl.student}}</p>
+	<hr/>
+	<p>Coops: {{student_ctrl.coops}}</p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<strong>
@@ -52,14 +54,18 @@
 						<div class="panel-heading">
 							Co-Op	
 							<a class="btn btn-success pull-right"
-								ng-click="student_ctrl.new_coop()">
+								ng-click="student_ctrl.add_coop()">
 								<span class="glyphicon glyphicon-plus"></span>
 								Add
 							</a>
 							<div class="clearfix"></div>
 						</div>
 						<div class="panel-body">
-							<p> Co Op Information Here</p>
+							<ul>
+								<li ng-repeat="coop in student_ctrl.coops">
+									<p>{{coop.company_name}}</p>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
