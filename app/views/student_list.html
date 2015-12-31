@@ -36,10 +36,28 @@
 								{{student.advisor.last_name}}
 							</td>
 							<td>
-								<button class="btn btn-primary" 
+								<div class="btn-group dropdown" role="group">
+									<button class="btn btn-primary" 
 										ng-click="student_list_ctrl.goto(student.id)">
-									Details
-								</button>
+										Details
+									</button>
+
+									<button class="btn btn-default dropdown-toggle"
+										type="button"
+										id="actionsDropdown{{student.id}}"
+										data-toggle="dropdown">
+										More
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu"
+										aria-labeled-by="actionsDropdown{{student.id}}">
+										<li>
+											<a ng-href="#/students/{{student.id}}/audits/new">
+												Log Audit
+											</a>
+										</li>
+									</ul>
+								</div>
 							</td>
 						</tr>
 					</tbody>

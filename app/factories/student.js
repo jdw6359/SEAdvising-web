@@ -6,6 +6,10 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
     	add_coop: {
     		url: BASE_API_ENDPOINT + '/students/:id/coops',
     		method: 'POST'
+    	},
+    	add_audit: {
+    		url: BASE_API_ENDPOINT + '/students/:id/audits',
+    		method: 'POST'
     	}
     });
 }

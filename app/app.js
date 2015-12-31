@@ -99,6 +99,15 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         } 
       })
+      .when('/students/:id/audits/new',{
+        templateUrl: 'app/views/audit_new.html',
+        controller: 'AuditNewController',
+        controllerAs: 'audit_new_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

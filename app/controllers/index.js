@@ -3,6 +3,7 @@
 var app = require('angular').module('sea');
 
 app.controller('ApplicationController', require('./application'));
+app.controller('AuditNewController', require('./audit_new'));
 app.controller('MainController', require('./main'));
 app.controller('LoginController', require('./login'));
 app.controller('EmailVerificationController', require('./email_verification'));
