@@ -53,8 +53,40 @@
 						Change of Program In
 					</div>
 					<div class="panel-body">
-						<p>This student has applied for a change of program into the Software Engineering Department</p>
-						<p><b>Effective Term:</b>{{student_ctrl.student.cop_in_effective_term}}</p>
+						<i>This student has applied for a change of program into the Software Engineering Department</i>
+						<hr/>
+						<p>
+							<b>Effective Term:</b>
+							{{student_ctrl.student.cop_in_effective_term}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6"
+				ng-if="student_ctrl.student.cop_out">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Change of Program Out
+					</div>
+					<div class="panel-body">
+						<i>This student has applied for a change of program out of the Software Engineering Department</i>
+						<hr/>
+						<p>
+							<b>Code: </b>
+							{{student_ctrl.student.cop_out.code}}
+						</p>
+						<p>
+							<b>New Plan: </b>
+							{{student_ctrl.student.cop_out.new_plan}}
+						</p>
+						<p>
+							<b>Effective Term: </b>
+							{{student_ctrl.student.cop_out.effective_term}}
+						</p>
+						<p>
+							<b>Application Status: </b>
+							{{student_ctrl.student.cop_out.application_status}}
+						</p>
 					</div>
 				</div>
 			</div>

@@ -108,6 +108,15 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
+      .when('/students/:id/cop_out/new',{
+        templateUrl: 'app/views/cop_out_new.html',
+        controller: 'CopOutNewController',
+        controllerAs: 'cop_out_new_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

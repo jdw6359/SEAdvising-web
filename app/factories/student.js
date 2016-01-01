@@ -10,7 +10,11 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
     	add_audit: {
     		url: BASE_API_ENDPOINT + '/students/:id/audits',
     		method: 'POST'
-    	}
+    	},
+        add_cop_out: {
+            url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
+            method: 'POST'
+        }
     });
 }
 
