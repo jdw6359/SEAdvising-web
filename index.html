@@ -43,6 +43,20 @@
               </li>
             </ul>
             <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
+              <li ng-controller="StudentSearchController as student_search_ctrl"
+                class="top-space">
+                <input type="text"
+                  class="form-control"
+                  ng-model="student_search_ctrl.student"
+                  placeholder="Student Search"
+                  uib-typeahead="student.first_name + ' ' + student.last_name for student in student_search_ctrl.getStudents($viewValue)"
+                  typeahead-no-results="student_search_ctrl.noResults"
+                  typeahead-on-select="student_search_ctrl.onSelect($item, $model, $label)" />
+                <div ng-show="student_search_ctrl.noResults">
+                  <i class="glyphicon glyphicon-remove">
+                  </i> No Results Found
+                </div>
+              </li>
               <li class="dropdown" ng-show="currentUser" ng-cloak>
                 <a class="dropdown-toggle" data-toggle="dropdown"
                     role="button" aria-haspopup="true"
