@@ -4,11 +4,17 @@
 	</div>
 	<p>Student: {{student_ctrl.student}}</p>
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="panel-heading clearfix">
 			<strong>
 				{{student_ctrl.student.last_name}},
 				{{student_ctrl.student.first_name}}
 			</strong>
+			<div class="pull-right dropdown">
+				<sea-student-action
+					student="student_ctrl.student"
+					title="'Actions'">
+				</sea-student-action>
+			</div>
 		</div>
 		<div class="panel-body">
 			<div class="row">

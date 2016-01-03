@@ -1,0 +1,26 @@
+<!--
+Make sure that references to this directive are
+wrapped in a div with class="dropdown"
+Including the "dropdown" class within this template
+breaks the "btn-group" class in "/views/student_list.html"
+-->
+<button class="btn btn-default dropdown-toggle"
+	type="button"
+	id="actionsDropdown{{student.id}}"
+	data-toggle="dropdown">
+	{{title}}
+	<span class="caret"></span>
+</button>
+<ul class="dropdown-menu"
+	aria-labeled-by="actionsDropdown{{student.id}}">
+	<li>
+		<a ng-href="#/students/{{student.id}}/audits/new">
+			Log Audit
+		</a>
+	</li>
+	<li>
+		<a ng-href="#/students/{{student.id}}/cop_out/new">
+			Change Program Out
+		</a>
+	</li>
+</ul>
