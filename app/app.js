@@ -21,7 +21,8 @@ angular
     require('angular-route'),
     require('angular-touch'),
     require('angular-loading-bar'),
-    require('angular-ui-bootstrap')
+    require('angular-ui-bootstrap'),
+    require('angular-utils-pagination')
   ])
   .constant('BASE_API_ENDPOINT', 'http://localhost:3000/api/v1')
   .constant('AUTH_EVENTS', {

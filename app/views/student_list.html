@@ -27,7 +27,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="student in student_list_ctrl.students">
+						<tr dir-paginate="student in student_list_ctrl.students | itemsPerPage: 12">
 							<td>{{student.first_name}}</td>
 							<td>{{student.last_name}}</td>
 							<td>{{student.email}}</td>
@@ -50,7 +50,8 @@
 							</td>
 						</tr>
 					</tbody>
-				</table>	
+				</table>
+				<dir-pagination-controls></dir-pagination-controls>
 			</div>
 		</div>
 	</div>
