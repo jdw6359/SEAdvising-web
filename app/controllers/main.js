@@ -1,7 +1,7 @@
 'use strict';
 
-MainController.$inject = ['$scope'];
-function MainController($scope){
+MainController.$inject = [];
+function MainController(){
 
 }
 

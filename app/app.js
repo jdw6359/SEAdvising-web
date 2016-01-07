@@ -148,12 +148,7 @@ angular
           }
         }
       }
-
-      console.log("setting http header");
       $http.defaults.headers.common["Auth-Token"] = $cookies.get("authToken");
-      console.log("header: " + $http.defaults.headers.common["Auth-Token"]);
-      console.log("done setting http header");
-
     })
   });
   

@@ -1,0 +1,14 @@
+<div class="list-group">
+	<a ng-repeat="log in transaction_log_ctrl.logs"
+		class="list-group-item"
+		href="#/students/{{log.student_id}}"> 
+		<h4 class="list-group-item-heading">{{log.loggable_type}}
+			<span class="label"
+				ng-class="{Added:'label-success', Updated:'label-warning', Removed:'label-danger'}[log.action]">
+				{{log.action}}
+			</span>
+		</h4>
+		<p class="list-group-item-text">{{log.message}}</p>
+		<p class="list-group-item-text"><b>{{log.student.first_name}} {{log.student.last_name}}</b></p>
+	</a>
+</div>
