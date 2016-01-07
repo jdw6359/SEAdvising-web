@@ -1,7 +1,9 @@
 <div class="list-group">
 	<a ng-repeat="log in transaction_log_ctrl.logs"
 		class="list-group-item"
-		href="#/students/{{log.student_id}}"> 
+		href="#/students/{{log.student_id}}"
+		uib-popover="Click to go to {{log.student.first_name}} {{log.student.last_name}}'s student record"
+		popover-trigger="mouseenter"> 
 		<h4 class="list-group-item-heading">{{log.loggable_type}}
 			<span class="label"
 				ng-class="{Added:'label-success', Updated:'label-warning', Removed:'label-danger'}[log.action]">
@@ -9,6 +11,9 @@
 			</span>
 		</h4>
 		<p class="list-group-item-text">{{log.message}}</p>
-		<p class="list-group-item-text"><b>{{log.student.first_name}} {{log.student.last_name}}</b></p>
+		<p class="list-group-item-text">
+			<b>{{log.student.first_name}} {{log.student.last_name}}</b>
+			<i>{{log.created_at | date: "medium"}}</i>
+		</p>
 	</a>
 </div>
