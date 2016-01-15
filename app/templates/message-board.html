@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4>Messages</h4>
+	</div>
+	<div class="panel-body">
+		<div class="panel panel-default"
+			ng-repeat="message in message_board_ctrl.messages">
+			<div class="panel-body">
+				{{message.message}}
+			</div>
+			<div class="panel-footer">
+				<b>
+					{{message.user.first_name}} {{message.user.last_name}}
+					at {{message.created_at | date: "medium"}}
+				</b>
+			</div>
+		</div>
+	</div>
+</div>
