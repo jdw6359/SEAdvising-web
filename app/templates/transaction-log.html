@@ -1,19 +1,21 @@
 <div class="list-group">
-	<a ng-repeat="log in transaction_log_ctrl.logs"
+	<a ng-repeat="transaction in transaction_log_ctrl.transactions"
 		class="list-group-item"
-		href="#/students/{{log.student_id}}"
-		uib-popover="Click to go to {{log.student.first_name}} {{log.student.last_name}}'s student record"
+		href="#/students/{{transaction.student_id}}"
+		uib-popover="Click to go to {{transaction.student.first_name}} {{transaction.student.last_name}}'s student record"
 		popover-trigger="mouseenter"> 
-		<h4 class="list-group-item-heading">{{log.loggable_type}}
+		<h4 class="list-group-item-heading">{{transaction.loggable_type}}
 			<span class="label"
-				ng-class="{Added:'label-success', Updated:'label-warning', Removed:'label-danger'}[log.action]">
-				{{log.action}}
+				ng-class="{Added:'label-success', Updated:'label-warning', Removed:'label-danger'}[transaction.action]">
+				{{transaction.action}}
 			</span>
 		</h4>
-		<p class="list-group-item-text">{{log.message}}</p>
+		<p class="list-group-item-text">{{transaction.message}}</p>
 		<p class="list-group-item-text">
-			<b>{{log.student.first_name}} {{log.student.last_name}}</b>
-			<i>{{log.created_at | date: "medium"}}</i>
+			<b>
+				{{transaction.student.first_name}} {{transaction.student.last_name}}
+			</b>
+			<i>{{transaction.created_at | date: "medium"}}</i>
 		</p>
 	</a>
 </div>

@@ -11,6 +11,7 @@ function StudentController($scope, $routeParams, $uibModal,
 
     var vm = this;
     vm.student = StudentFactory.get({id: $routeParams.id});
+    vm.transactions = StudentFactory.transactions({id: $routeParams.id});
 
     vm.add_coop = function(){
     	vm.coopModalInstance = $uibModal.open({

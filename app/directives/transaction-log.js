@@ -4,6 +4,9 @@ function TransactionLogDirective(){
 	return{
 		templateUrl: 'app/templates/transaction-log.html',
 		restrict: 'E',
+		bindToController: {
+			transactions: '='
+		},
 		controller: ['TransactionFactory', TransactionLogController],
 		controllerAs: 'transaction_log_ctrl'
 	}
@@ -12,7 +15,6 @@ function TransactionLogDirective(){
 function TransactionLogController(TransactionFactory){
 
 	var vm = this;
-	vm.logs = TransactionFactory.query();
 
 }
 

@@ -8,6 +8,11 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
             method: 'GET',
             isArray: true
         },
+        transactions: {
+            url: BASE_API_ENDPOINT + '/students/:id/transactions',
+            method: 'GET',
+            isArray: true
+        },
         add_coop: {
     		url: BASE_API_ENDPOINT + '/students/:id/coops',
     		method: 'POST'
