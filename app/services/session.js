@@ -12,9 +12,6 @@ function Session($cookies){
 		//fill with other session data here
 	};
 	this.destroy = function(){
-
-		console.log("session service destroy invoked");
-
 		$cookies.remove("authToken");
 
 		this.authToken = null;

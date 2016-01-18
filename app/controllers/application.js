@@ -17,13 +17,13 @@ function ApplicationController($scope, $cookies, $location, USER_ROLES, AuthServ
 		})
 	}
 
-
 	$scope.setCurrentUser = function(user){
 		$scope.currentUser = user;
 	};
 
 	$scope.logout = function(){
-		console.log("logging out");
+		AuthService.logout();
+		$location.path('/login');
 	}
 };
 

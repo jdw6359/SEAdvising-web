@@ -32,6 +32,10 @@ function AuthService($http, Session, BASE_URL){
 			});
 	};
 
+	authService.logout = function(){
+		Session.destroy();
+	}
+
 	authService.isAuthenticated = function(){
 		return !!Session.authToken;
 	}
