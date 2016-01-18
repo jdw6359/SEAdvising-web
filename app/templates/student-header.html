@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>
+					{{student_header_ctrl.student.first_name}}
+					{{student_header_ctrl.student.last_name}}
+				</strong>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4">
+						<b>Email:</b>
+						{{student_header_ctrl.student.email}}
+					</div>
+					<div class="col-md-4">
+						<b>Expected Graduation:</b>
+						{{student_header_ctrl.student.expected_graduation}}
+					</div>
+					<div class="col-md-4">
+						<b>Status:</b>
+						<!-- TODO: attribute directive for status "button" -->
+						{{student_header_ctrl.student.status}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
