@@ -17,9 +17,10 @@ function AuditNewController($location, $routeParams, StudentFactory){
 	}
 
 	vm.submit = function(){
-		StudentFactory.add_audit({id: $routeParams.id},
+		var student_id = $routeParams.id;
+		StudentFactory.add_audit({id: student_id},
 			{audit: vm.audit}, function(res){
-			$location.path("/students");
+			$location.path('/students/' + student_id);
 		});
 	}
 }

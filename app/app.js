@@ -118,6 +118,15 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
+      .when('/students/:id/coop/new',{
+        templateUrl: 'app/views/coop_new.html',
+        controller: 'CoopNewController',
+        controllerAs: 'coop_new_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });
