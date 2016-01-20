@@ -3,15 +3,39 @@
 		<h4>Messages</h4>
 	</div>
 	<div class="panel-body">
+		<form name="message_post_form"
+			ng-submit="message_board_ctrl.submit()">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label for="new_message">
+						New Message
+					</label>
+					<textarea id="new_message"
+						rows="5"
+						class="form-control"
+						ng-model="message_board_ctrl.post.message"
+						placeholder="Please enter a new message">
+					</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<button type="submit"
+						class="btn btn-block btn-success">
+						Submit
+					</button>
+				</div>
+			</div>
+		</form>
 		<div class="panel panel-default"
-			ng-repeat="message in message_board_ctrl.messages">
+			ng-repeat="post in message_board_ctrl.posts">
 			<div class="panel-body">
-				{{message.message}}
+				{{post.message}}
 			</div>
 			<div class="panel-footer">
 				<b>
-					{{message.user.first_name}} {{message.user.last_name}}
-					at {{message.created_at | date: "medium"}}
+					{{post.user.first_name}} {{post.user.last_name}}
+					at {{post.created_at | date: "medium"}}
 				</b>
 			</div>
 		</div>
