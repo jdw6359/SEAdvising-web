@@ -3,33 +3,20 @@
 //TODO: Remove $http from injection
 StudentController.$inject = ['$scope',
 	'$routeParams',
-	'$uibModal',
 	'CoopFactory',
 	'StudentFactory'];
-function StudentController($scope, $routeParams, $uibModal,
-	CoopFactory, StudentFactory){
+function StudentController($scope, $routeParams, CoopFactory, StudentFactory){
 
     var vm = this;
-    vm.student = StudentFactory.get({id: $routeParams.id});
-    vm.transactions = StudentFactory.transactions({id: $routeParams.id});
+    var student_id = $routeParams.id
+    vm.student = StudentFactory.get({id: student_id});
+    vm.transactions = StudentFactory.transactions({id: student_id});
+    vm.notes = StudentFactory.notes({id: student_id})
 
-    vm.add_coop = function(){
-    	vm.coopModalInstance = $uibModal.open({
-    		templateUrl: 'app/templates/modals/coop.html',
-    		controller: 'CoopModalController',
-    		controllerAs: 'coop_modal_ctrl',
-    		scope: $scope
-    	});
-    }
-
-    vm.remove_coop = function(coop){
-    	var remove = confirm("Are you sure you would like to remove the coop at " + coop.company_name + "?");
-    	if(remove){
-    		CoopFactory.remove({id:coop.id}, function(res){
-                $scope.refresh();
-            });
-    	}
-    }
+    vm.notes.$promise.then(function(res){
+        console.log("notes response");
+        console.log(res);
+    })
 
     $scope.refresh = function(){
         vm.student = StudentFactory.get({id: $routeParams.id});

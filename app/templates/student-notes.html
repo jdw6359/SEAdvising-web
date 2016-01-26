@@ -1,0 +1,11 @@
+<h3 ng-if="student_notes_ctrl.notes.length">Student Notes</h3>
+<div class="list-group">
+	<div class="list-group-item"
+		ng-repeat="note in student_notes_ctrl.notes">
+		<p class="list-group-item-text">{{note.message}}</p>
+		<p class="list-group-item-text">
+			<b>{{note.user.first_name}} {{note.user.last_name}}</b> at
+			{{note.created_at | date: "medium"}}
+		</p>
+	</div>
+</div>
