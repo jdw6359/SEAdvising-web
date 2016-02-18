@@ -1,0 +1,42 @@
+<div class="modal-header">
+	<strong>Configure Labels</strong>
+</div>
+<form name="EditLabelForm" ng-submit="edit_labels_ctrl.submit()">
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="btn btn-success btn-block"
+					ng-click="edit_labels_ctrl.toggleLabel('event_attendee')">
+					Event
+					<span class="glyphicon glyphicon-ok pull-right"
+						ng-if="edit_labels_ctrl.student.event_attendee_label">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="btn btn-danger btn-block"
+					ng-click="edit_labels_ctrl.toggleLabel('red_flag')">
+					Red Flag
+					<span class="glyphicon glyphicon-ok pull-right"
+						ng-if="edit_labels_ctrl.student.red_flag_label">
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="row">
+			<div class="col-md-8">
+				<p>*You must submit this form for the changes to apply*</p>
+			</div>
+			<div class="col-md-4">
+				<button type="submit" 
+					class="btn btn-success btn-block">
+					Submit
+				</button>		
+			</div>
+		</div>
+	</div>
+</form>

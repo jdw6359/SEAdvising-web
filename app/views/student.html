@@ -18,6 +18,10 @@
 							{{student_ctrl.student.last_name}},
 							{{student_ctrl.student.first_name}}
 						</strong>
+						<sea-label-display ng-if="isAuthorized(userRoles.advisor)"
+							student="student_ctrl.student"
+							detail="true">
+						</sea-label-display>						
 						<div class="pull-right dropdown">
 							<sea-student-action
 								student="student_ctrl.student"

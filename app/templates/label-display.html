@@ -1,9 +1,13 @@
 <span class="label label-danger"
-	ng-if="student.red_flag_label">
+	ng-if="label_display_ctrl.student.red_flag_label">
 	Red Flag
 </span>
-<br />
 <span class="label label-success"
-	ng-if="student.event_attendee_label">
+	ng-if="label_display_ctrl.student.event_attendee_label">
 	Event Attendee
 </span>
+<div ng-if="label_display_ctrl.detail" 
+	class="btn btn-default"
+	ng-click="label_display_ctrl.editLabels()">
+	Edit Labels
+</div>
