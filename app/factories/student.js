@@ -3,7 +3,10 @@
 StudentFactory.$inject = ['$resource', 'BASE_API_ENDPOINT'];
 function StudentFactory($resource, BASE_API_ENDPOINT) {
     return $resource(BASE_API_ENDPOINT + '/students/:id', {associations: true}, {
-    	search: {
+    	update: {
+            method: 'PATCH'
+        },
+        search: {
             url: BASE_API_ENDPOINT + '/students/search',
             method: 'GET',
             isArray: true

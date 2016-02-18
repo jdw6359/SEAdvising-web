@@ -1,7 +1,7 @@
 'use-strict'
 
-EditLabelsController.$inject = ['student', '$uibModalInstance']
-function EditLabelsController(student, $uibModalInstance) {
+EditLabelsController.$inject = ['StudentFactory', 'student', '$uibModalInstance']
+function EditLabelsController(StudentFactory, student, $uibModalInstance) {
 	console.log("Edit Labels Controller Loaded...")
 
 	var vm = this;
@@ -10,7 +10,9 @@ function EditLabelsController(student, $uibModalInstance) {
 	vm.submit = function(){
 		console.log("making a PUT / PATCH to student");
 		//close the modal for now
-		$uibModalInstance.close({"test": "test"});
+		StudentFactory.update({id: vm.student.id}, {student: vm.student}, function(res) {
+			$uibModalInstance.close(res);
+		});
 	};
 
 	//provided with the label name, will toggle the flag on the model
@@ -25,7 +27,6 @@ function EditLabelsController(student, $uibModalInstance) {
 				break;
 
 			case "event_attendee":
-				console.log("toggle event_attendee");
 				if(vm.student.event_attendee_label) {
 					vm.student.event_attendee_label = false;
 				} else {

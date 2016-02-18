@@ -30,10 +30,9 @@ function LabelDisplayController($uibModal){
 			}
 		});
 
-		labelModalInstance.result.then(function (res) {
-			console.log("this is a callback for when the modal is closed");
-			console.log("this is the response from the closing event: ");
-			console.log(res);
+		labelModalInstance.result.then(function (student) {
+			//set vm.student to what is returned from the modal instance closing event
+			vm.student = student;
 		})
 	}
 
