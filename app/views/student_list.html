@@ -23,6 +23,7 @@
 							<th>Last Name</th>
 							<th>Email</th>
 							<th>Advisor</th>
+							<th ng-if="isAuthorized(userRoles.advisor)">Labels</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -34,6 +35,10 @@
 							<td>
 								{{student.advisor.first_name}}
 								{{student.advisor.last_name}}
+							</td>
+							<td ng-if="isAuthorized(userRoles.advisor)">
+								<sea-label-display student="student">
+								</sea-label-display>
 							</td>
 							<td>
 								<div class="btn-group dropdown">

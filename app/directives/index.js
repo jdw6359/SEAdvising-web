@@ -2,6 +2,7 @@
 
 var app = require('angular').module('sea');
 
+app.directive('seaLabelDisplay', require('./label-display'));
 app.directive('seaMessageBoard', require('./message-board'));
 app.directive('seaStudentAction', require('./student-action'));
 app.directive('seaStudentHeader', require('./student-header'));
