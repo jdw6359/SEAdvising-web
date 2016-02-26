@@ -1,4 +1,10 @@
-<h3 ng-if="student_notes_ctrl.notes.length">Student Notes</h3>
+<h3 ng-if="student_notes_ctrl.notes.length">
+	Student Notes
+	<div class="btn btn-success"
+		ng-click="student_notes_ctrl.add_note()">
+		Add Note
+	</div>
+</h3>
 <div class="list-group">
 	<div class="list-group-item"
 		ng-repeat="note in student_notes_ctrl.notes">
