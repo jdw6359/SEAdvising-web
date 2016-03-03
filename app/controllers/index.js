@@ -7,6 +7,7 @@ app.controller('ApplicationController', require('./application'));
 require('./details');
 
 //route / page specific controllers
+app.controller('AddNoteController', require('./add_note'));
 app.controller('MainController', require('./main'));
 app.controller('LoginController', require('./login'));
 app.controller('EditLabelsController', require('./edit_labels'));

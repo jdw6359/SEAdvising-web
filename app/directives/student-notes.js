@@ -24,6 +24,29 @@ function StudentNotesController($uibModal, $routeParams, StudentFactory){
 		console.log(res);
 	});
 
+	// Click listener for add note functionality
+	vm.add_note = function(){
+		console.log("adding note");
+
+
+		var notesModalInstance = $uibModal.open({
+			templateUrl: 'app/templates/modals/add-note.html',
+			controller: 'AddNoteController',
+			controllerAs: 'add_note_ctrl',
+			resolve: {
+				studentId: function () {
+					return vm.studentId;
+				}
+			}
+		});
+
+		notesModalInstance.result.then(function (student) {
+			//set vm.student to what is returned from the modal instance closing event
+			vm.student = student;
+		})		
+		
+	}
+
 
 }
 
