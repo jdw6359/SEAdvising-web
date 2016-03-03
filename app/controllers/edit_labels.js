@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 EditLabelsController.$inject = ['StudentFactory', 'student', '$uibModalInstance']
 function EditLabelsController(StudentFactory, student, $uibModalInstance) {

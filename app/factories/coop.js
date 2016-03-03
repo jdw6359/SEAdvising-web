@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 CoopFactory.$inject = ['$resource', 'BASE_API_ENDPOINT'];
 function CoopFactory($resource, BASE_API_ENDPOINT){

@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 StudentSearchController.$inject = ['$location', 'StudentFactory'];
 function StudentSearchController($location, StudentFactory){

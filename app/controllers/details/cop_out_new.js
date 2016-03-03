@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 CopOutNewController.$inject = ['$location', '$routeParams', 'StudentFactory']
 

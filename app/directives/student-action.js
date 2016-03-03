@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 function StudentActionDirective() {
 	return {
@@ -12,4 +12,3 @@ function StudentActionDirective() {
 }
 
 module.exports = StudentActionDirective;
-

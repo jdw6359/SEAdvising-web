@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 TransactionFactory.$inject = ['$resource', 'BASE_API_ENDPOINT'];
 function TransactionFactory($resource, BASE_API_ENDPOINT){

@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 CoopNewController.$inject = ['$location', '$routeParams', 'StudentFactory'];
 function CoopNewController($location, $routeParams, StudentFactory){

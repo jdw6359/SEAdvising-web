@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 PasswordResetFactory.$inject = ['$resource', 'BASE_API_ENDPOINT'];
 function PasswordResetFactory($resource, BASE_API_ENDPOINT){

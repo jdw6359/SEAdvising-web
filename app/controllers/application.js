@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 ApplicationController.$inject = ['$scope', '$cookies', '$location', 'USER_ROLES', 'AuthService'];
 function ApplicationController($scope, $cookies, $location, USER_ROLES, AuthService){

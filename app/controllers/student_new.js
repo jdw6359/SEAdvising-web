@@ -1,4 +1,4 @@
-'use-strict'
+'use strict'
 
 StudentNewController.$inject = ['$http', '$location', 'StudentFactory', 'AdvisorFactory'];
 
