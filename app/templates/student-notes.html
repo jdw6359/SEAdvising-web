@@ -1,6 +1,7 @@
 <h3>
 	Student Notes
 	<div class="btn btn-success"
+		ng-if="isAuthorized(userRoles.advisor)"
 		ng-click="student_notes_ctrl.add_note()">
 		Add Note
 	</div>

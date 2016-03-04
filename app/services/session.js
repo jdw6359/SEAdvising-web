@@ -11,6 +11,7 @@ function Session($cookies){
 		this.userRole = userRole;
 		//fill with other session data here
 	};
+
 	this.destroy = function(){
 		$cookies.remove("authToken");
 

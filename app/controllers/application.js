@@ -22,6 +22,7 @@ function ApplicationController($scope, $cookies, $location, USER_ROLES, AuthServ
 	};
 
 	$scope.logout = function(){
+		$scope.currentUser = null;
 		AuthService.logout();
 		$location.path('/login');
 	}
