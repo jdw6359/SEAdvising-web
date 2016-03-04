@@ -19,35 +19,30 @@ function StudentNotesController($uibModal, $routeParams, StudentFactory){
 	// get the studentId from the url
 	var studentId = $routeParams.id;
 
-	vm.notes = StudentFactory.notes({id: studentId}, function(res){
-		console.log("notes response: ");
-		console.log(res);
-	});
+	// get all notes associated with student
+	vm.notes = StudentFactory.notes({id: studentId});
 
 	// Click listener for add note functionality
 	vm.add_note = function(){
-		console.log("adding note");
 
-
+		// open up 
 		var notesModalInstance = $uibModal.open({
 			templateUrl: 'app/templates/modals/add-note.html',
 			controller: 'AddNoteController',
 			controllerAs: 'add_note_ctrl',
 			resolve: {
 				studentId: function () {
-					return vm.studentId;
+					return studentId;
 				}
 			}
 		});
 
-		notesModalInstance.result.then(function (student) {
-			//set vm.student to what is returned from the modal instance closing event
-			vm.student = student;
-		})		
-		
+		// notesModalInstance will provide note in callback when closed
+		notesModalInstance.result.then(function (note) {
+			// add the created note to directive view model.
+			vm.notes.push(note);
+		});
 	}
-
-
 }
 
 module.exports = StudentNotesDirective;

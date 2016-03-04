@@ -1,6 +1,25 @@
 <div class="modal-header">
-	<strong>Add Note</strong>
+	<strong>Add Note to Student Record</strong>
 </div>
-<div class="modal-body">
-	<p>This is the modal body</p>
-</div>
+<form name="AddNoteForm" ng-submit="add_note_ctrl.submit()">
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-12 form-group">
+				<label for="NoteContent">Note Message</label>
+				<textarea class="form-control"
+					ng-model="add_note_ctrl.note.message"
+					id="NoteContent"
+					rows="5">
+				</textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<button type="submit"
+					class="btn btn-success btn-block">
+					Submit
+				</button>
+			</div>
+		</div>
+	</div>
+</form>
