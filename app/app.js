@@ -57,7 +57,7 @@ angular
           requiresAuthentication: false
         }
       })
-      .when('/email_verification',{
+      .when('/email_verification', {
         templateUrl: 'app/views/email_verification.html',
         controller: 'EmailVerificationController', 
         controllerAs: 'email_verification_ctrl',
@@ -65,7 +65,7 @@ angular
           requiresAuthentication: false
         }
       })
-      .when('/password_reset/:id',{
+      .when('/password_reset/:id', {
         templateUrl: 'app/views/password_reset.html',
         controller: 'PasswordResetController',
         controllerAs: 'password_reset_ctrl',
@@ -73,7 +73,16 @@ angular
           requiresAuthentication: false
         }
       })
-      .when('/students/new',{
+      .when('/settings/labels', {
+        templateUrl: 'app/views/settings/labels.html', 
+        controller: 'LabelsController',
+        controllerAs: 'labels_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor]
+        }
+      })
+      .when('/students/new', {
         templateUrl: 'app/views/student_new.html',
         controller: 'StudentNewController',
         controllerAs: 'student_new_ctrl',
@@ -82,7 +91,7 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })      
-      .when('/students',{
+      .when('/students', {
         templateUrl: 'app/views/student_list.html',
         controller: 'StudentListController',
         controllerAs: 'student_list_ctrl',
@@ -91,7 +100,7 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
-      .when('/students/:id',{
+      .when('/students/:id', {
         templateUrl: 'app/views/student.html',
         controller: 'StudentController',
         controllerAs: 'student_ctrl',
@@ -100,7 +109,7 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         } 
       })
-      .when('/students/:id/audits/new',{
+      .when('/students/:id/audits/new', {
         templateUrl: 'app/views/audit_new.html',
         controller: 'AuditNewController',
         controllerAs: 'audit_new_ctrl',
@@ -109,7 +118,7 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
-      .when('/students/:id/cop_out/new',{
+      .when('/students/:id/cop_out/new', {
         templateUrl: 'app/views/cop_out_new.html',
         controller: 'CopOutNewController',
         controllerAs: 'cop_out_new_ctrl',
@@ -118,7 +127,7 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
-      .when('/students/:id/coop/new',{
+      .when('/students/:id/coop/new', {
         templateUrl: 'app/views/coop_new.html',
         controller: 'CoopNewController',
         controllerAs: 'coop_new_ctrl',

@@ -41,23 +41,6 @@
               <li>
                 <a href="#/students">Students</a>
               </li>
-              <li class="dropdown" ng-if="isAuthorized(userRoles.advisor)"
-                ng-cloak>
-                <a class="dropdown-toggle" data-toggle="dropdown"
-                    role="button" aria-haspopup="true"
-                    aria-expanded="false">
-                    Labels
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a>Red Flag</a>
-                  </li>
-                  <li>
-                    <a>Event Attendee</a>
-                  </li>    
-                </ul>
-              </li>
             </ul>
             <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
               <li ng-controller="StudentSearchController as student_search_ctrl"
@@ -73,6 +56,24 @@
                   <i class="glyphicon glyphicon-remove">
                   </i> No Results Found
                 </div>
+              </li>
+              <li class="dropdown" ng-if="isAuthorized(userRoles.advisor)"
+                ng-cloak>
+                <a class="dropdown-toggle" data-toggle="dropdown"
+                    role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="glyphicon glyphicon-cog"></i>
+                    Settings
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a ng-href="#/settings/labels">Labels</a>
+                  </li>
+                  <li>
+                    <a>Other Settings</a>
+                  </li>    
+                </ul>
               </li>
               <li class="dropdown" ng-show="currentUser" ng-cloak>
                 <a class="dropdown-toggle" data-toggle="dropdown"
