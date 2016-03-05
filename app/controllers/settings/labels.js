@@ -3,7 +3,11 @@
 LabelsController.$inject = ['LabelFactory', '$location'];
 
 function LabelsController(LabelFactory, $location) {
-	console.log("labels controller invoked");
+	
+	var vm = this;
+
+	vm.labels = LabelFactory.query();
+
 }
 
 module.exports = LabelsController;

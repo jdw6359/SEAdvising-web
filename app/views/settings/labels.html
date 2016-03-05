@@ -1,1 +1,36 @@
-<h1>Labels Page</h1>
+<h1>Settings - Labels</h1>
+<hr/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-10">
+				<strong>Labels</strong>
+			</div>
+			<div class="col-md-2">
+				<a class="btn btn-success btn-md"
+					ng-href="#/settings/label_new">
+					<i class="glyphicon glyphicon-plus"></i>
+					Add Label
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped table-responsive">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Color</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="label in labels_ctrl.labels">
+				<td>{{label.name}}</td>
+				<td>{{label.description}}</td>
+				<td>{{label.color}}</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+</div>
