@@ -8,8 +8,7 @@ module.exports = function () {
             './node_modules/font-awesome/css/font-awesome.css',
             './node_modules/textangular/dist/textAngular.css',
             './node_modules/angular-loading-bar/build/loading-bar.css',
-            './node_modules/angularjs-color-picker/dist/angularjs-color-picker.min.css',
-            './node_modules/angularjs-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css',
+            './node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css',
             './styles/site.css'
         ])
         .pipe(minify())

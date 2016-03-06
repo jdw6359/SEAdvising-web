@@ -21,6 +21,7 @@
   "dependencies": {
     "angular": "^1.4.7",
     "angular-animate": "^1.4.7",
+    "angular-bootstrap-colorpicker": "^3.0.24",
     "angular-cookies": "^1.4.7",
     "angular-loading-bar": "^0.8.0",
     "angular-resource": "^1.4.7",
@@ -29,7 +30,6 @@
     "angular-ui-bootstrap": "^0.14.3",
     "angular-ui-mask": "^1.6.1",
     "angular-utils-pagination": "^0.9.3",
-    "angularjs-color-picker": "^1.0.1",
     "bootstrap": "^3.3.5",
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.4",

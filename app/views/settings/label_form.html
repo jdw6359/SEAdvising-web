@@ -3,38 +3,50 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1>{{label_form_ctrl.header_title}}</h1>
+				<h3>Result:
+					<span class="label label-default"
+						style="background-color:{{label_form_ctrl.label.color}}"
+						uib-popover="{{label_form_ctrl.label.description}}"
+						popover-trigger="mouseenter">
+						{{label_form_ctrl.label.name}}
+					</span>
+				</h3>
 			</div>
 		</div>
 		<hr/>
-		<div class="row">
-			<div class="form-group col-md-6">
-				<label for="label_name">Name</label>
-				<input id="label_name" type="text"
-					class="form-control"
-					ng-model="label_form_ctrl.label.name" />
+		<form name="LabelForm" ng-submit="label_form_ctrl.submit()">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="label_name">Name</label>
+					<input id="label_name" type="text"
+						class="form-control"
+						ng-model="label_form_ctrl.label.name" />
+				</div>
+				<div class="form-group col-md-6">
+					<label for="label_color">Color</label>
+					<input colorpicker 
+						colorpicker-close-on-select
+						id="label_color" type="text"
+						class="form-control" 
+						ng-model="label_form_ctrl.label.color" />
+				</div>
 			</div>
-			<div class="form-group col-md-6">
-				<label for="label_color">Color</label>
-				<input id="label_color" type="text"
-					class="form-control"
-					ng-model="label_form_ctrl.label.color" />
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label for="label_description">Description</label>
+					<textarea rows="5" id="label_description"
+						class="form-control"
+						ng-model="label_form_ctrl.label.description" />
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label for="label_description">Description</label>
-				<textarea rows="5" id="label_description"
-					class="form-control"
-					ng-model="label_form_ctrl.label.description" />
+			<div class="row">
+				<div class="col-md-6">
+					<button type="submit" 
+						class="btn btn-primary btn-block">
+						Submit
+					</button>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<button type="submit" 
-					class="btn btn-primary btn-block">
-					Submit
-				</button>
-			</div>
-		</div>
+		</form>
 	</div>
 </div>

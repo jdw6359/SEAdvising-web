@@ -12,6 +12,7 @@ global.jQuery = require('jquery')
 var angular = require('angular');
 
 require('bootstrap');
+require('../node_modules/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js');
 
 angular
   .module('sea', [
@@ -22,7 +23,8 @@ angular
     require('angular-touch'),
     require('angular-loading-bar'),
     require('angular-ui-bootstrap'),
-    require('angular-utils-pagination')
+    require('angular-utils-pagination'),
+    'colorpicker.module'
   ])
   .constant('BASE_API_ENDPOINT', 'http://localhost:3000/api/v1')
   .constant('AUTH_EVENTS', {
@@ -184,7 +186,3 @@ require('./directives');
 require('./filters');
 require('./services');
 require('./factories');
-
-// deps for colorpicker
-require('../node_modules/tinycolor2/dist/tinycolor-min.js');
-require('../node_modules/angularjs-color-picker/dist/angularjs-color-picker.min.js');
