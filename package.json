@@ -29,6 +29,7 @@
     "angular-ui-bootstrap": "^0.14.3",
     "angular-ui-mask": "^1.6.1",
     "angular-utils-pagination": "^0.9.3",
+    "angularjs-color-picker": "^1.0.1",
     "bootstrap": "^3.3.5",
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.4",

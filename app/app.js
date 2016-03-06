@@ -184,3 +184,7 @@ require('./directives');
 require('./filters');
 require('./services');
 require('./factories');
+
+// deps for colorpicker
+require('../node_modules/tinycolor2/dist/tinycolor-min.js');
+require('../node_modules/angularjs-color-picker/dist/angularjs-color-picker.min.js');
