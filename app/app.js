@@ -93,6 +93,15 @@ angular
           authorizedRoles: [USER_ROLES.advisor]
         }
       })
+      .when('/settings/label/:id/edit', {
+        templateUrl: 'app/views/settings/label_form.html',
+        controller: 'LabelEditController',
+        controllerAs: 'label_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor]
+        }
+      })
       .when('/students/new', {
         templateUrl: 'app/views/student_new.html',
         controller: 'StudentNewController',
