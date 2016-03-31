@@ -1,191 +1,199 @@
 <div class="container">
-	<div class="page-header">
-		<h1>Student Detail</h1>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<sea-transaction-log
-				transactions="student_ctrl.transactions">
-			</sea-transaction-log>
-			<sea-student-notes
-				studentId="student_ctrl.student.id">
-			</sea-student-notes>
-		</div>
-		<div class="col-md-9">
-			<div class="panel panel-default">
-					<div class="panel-heading clearfix">
-						<strong>
-							{{student_ctrl.student.last_name}},
-							{{student_ctrl.student.first_name}}
-						</strong>
-						<sea-label-display ng-if="isAuthorized(userRoles.advisor)"
-							student="student_ctrl.student"
-							detail="true">
-						</sea-label-display>						
-						<div class="pull-right dropdown">
-							<sea-student-action
-								student="student_ctrl.student"
-								title="'Actions'">
-							</sea-student-action>
-						</div>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-3">
-								<p>Email: {{student_ctrl.student.email}}</p>
-							</div>
-							<div class="col-md-3">
-								<p>
-									Advisor: {{student_ctrl.student.advisor.first_name}}
-											 {{student_ctrl.student.advisor.last_name}}
-								</p>
-							</div>
-							<div class="col-md-3">
-								<p>Status: {{student_ctrl.student.student_type}}</p>
-							</div>
-							<div class="col-md-3">
-								<p>Com Sub Plan: {{student_ctrl.student.com_sub_plan}}</p>
-							</div>				
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								<p>First Enrolled Term: {{student_ctrl.student.first_enrolled_term}}</p>
-							</div>
-							<div class="col-md-3">
-								<p>Expected Graduation: {{student_ctrl.student.expected_graduation}}</p>
-							</div>
-							<div class="col-md-3">
-								<p>
-									Placeholder Field
-								</p>
-							</div>
-							<div class="col-md-3">
-								<p>
-									Placeholder Field
-								</p>
-							</div>				
-						</div>
-						<div class="col-md-6"
-							ng-if="student_ctrl.student.cop_in">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									Change of Program In
-								</div>
-								<div class="panel-body">
-									<i>This student has applied for a change of program into the Software Engineering Department</i>
-									<hr/>
-									<p>
-										<b>Effective Term:</b>
-										{{student_ctrl.student.cop_in_effective_term}}
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6"
-							ng-if="student_ctrl.student.cop_out">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									Change of Program Out
-								</div>
-								<div class="panel-body">
-									<i>This student has applied for a change of program out of the Software Engineering Department</i>
-									<hr/>
-									<p>
-										<b>Code: </b>
-										{{student_ctrl.student.cop_out.code}}
-									</p>
-									<p>
-										<b>New Plan: </b>
-										{{student_ctrl.student.cop_out.new_plan}}
-									</p>
-									<p>
-										<b>Effective Term: </b>
-										{{student_ctrl.student.cop_out.effective_term}}
-									</p>
-									<p>
-										<b>Application Status: </b>
-										{{student_ctrl.student.cop_out.application_status}}
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									Audit History
-								</div>
-								<div class="panel-body">
-									<i ng-show="!student_ctrl.student.audits.length">
-										This student does not have an audit history
-									</i>
-									<ul class="list-group">
-										<li class="list-group-item row"
-											ng-repeat="audit in 
-											(filteredItems = (student_ctrl.student.audits | orderBy: 'date_performed':true))">
-											<div class="col-md-4">
-												<p>
-													<b>Date Performed:</b>
-													{{audit.date_performed |
-													date: "MM/dd/yyyy"}}
-												</p>
-											</div>
-											<div class="col-md-8">
-												<p>
-													<b>Comments:</b>
-													{{audit.comment}}
-												</p>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>								
-						<div class="col-md-6">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									Co-Op	
-								</div>
-								<div class="panel-body">
-									<i ng-show="!student_ctrl.student.coops.length">
-										This student has not registered any co-ops
-									</i>
-									<ul class="list-group">
-										<li class="list-group-item"
-											ng-repeat="coop in student_ctrl.student.coops">
-											<p>{{coop.company_name}}
-												<button type="button" 
-												class="btn btn-sm btn-danger pull-right"
-												ng-click="student_ctrl.remove_coop(coop)">
-												Delete
-												</button>
-											</p>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									Application Domain
-								</div>
-								<div class="panel-body">
-									<p>Application domain content here</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									Senior Project
-								</div>
-								<div class="panel-body">
-									{{student_ctrl.student.senior_project}}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>	
+    <div class="page-header">
+        <h1>Student Detail</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <sea-transaction-log
+                transactions="student_ctrl.transactions">
+            </sea-transaction-log>
+            <sea-student-notes
+                studentId="student_ctrl.student.id">
+            </sea-student-notes>
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <strong>
+                        {{student_ctrl.student.last_name}},
+                        {{student_ctrl.student.first_name}}
+                    </strong>
+                    <sea-label-display ng-if="isAuthorized(userRoles.advisor)"
+                        student="student_ctrl.student"
+                        detail="true">
+                    </sea-label-display>                        
+                    <div class="pull-right dropdown">
+                        <sea-student-action
+                            student="student_ctrl.student"
+                            title="'Actions'">
+                        </sea-student-action>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>Email:</strong>
+                            <p>
+                                {{student_ctrl.student.email}}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Advisor:</strong>
+                            <p>
+                                {{student_ctrl.student.advisor.first_name}}
+                                {{student_ctrl.student.advisor.last_name}}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Status:</strong>
+                            <p>
+                                {{student_ctrl.student.student_type}}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Com Sub Plan:</strong>
+                            <p>
+                                {{student_ctrl.student.com_sub_plan}}
+                            </p>
+                        </div>              
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>First Enrolled Term:</strong>
+                            <p>
+                                {{student_ctrl.student.first_enrolled_term}}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Expected Graduation:</strong>
+                            <p>
+                                {{student_ctrl.student.expected_graduation}}
+                            </p>
+                        </div>             
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"
+                            ng-if="student_ctrl.student.cop_in">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Change of Program In
+                                </div>
+                                <div class="panel-body">
+                                    <i>This student has applied for a change of program into the Software Engineering Department</i>
+                                    <hr/>
+                                    <p>
+                                        <b>Effective Term:</b>
+                                        {{student_ctrl.student.cop_in_effective_term}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"
+                            ng-if="student_ctrl.student.cop_out">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Change of Program Out
+                                </div>
+                                <div class="panel-body">
+                                    <i>This student has applied for a change of program out of the Software Engineering Department</i>
+                                    <hr/>
+                                    <p>
+                                        <b>Code: </b>
+                                        {{student_ctrl.student.cop_out.code}}
+                                    </p>
+                                    <p>
+                                        <b>New Plan: </b>
+                                        {{student_ctrl.student.cop_out.new_plan}}
+                                    </p>
+                                    <p>
+                                        <b>Effective Term: </b>
+                                        {{student_ctrl.student.cop_out.effective_term}}
+                                    </p>
+                                    <p>
+                                        <b>Application Status: </b>
+                                        {{student_ctrl.student.cop_out.application_status}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Audit History
+                                </div>
+                                <div class="panel-body">
+                                    <i ng-show="!student_ctrl.student.audits.length">
+                                        This student does not have an audit history
+                                    </i>
+                                    <ul class="list-group">
+                                        <li class="list-group-item row"
+                                            ng-repeat="audit in 
+                                            (filteredItems = (student_ctrl.student.audits | orderBy: 'date_performed':true))">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <b>Date Performed:</b>
+                                                    {{audit.date_performed |
+                                                    date: "MM/dd/yyyy"}}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p>
+                                                    <b>Comments:</b>
+                                                    {{audit.comment}}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>                              
+                        <div class="col-md-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Co-Op   
+                                </div>
+                                <div class="panel-body">
+                                    <i ng-show="!student_ctrl.student.coops.length">
+                                        This student has not registered any co-ops
+                                    </i>
+                                    <ul class="list-group">
+                                        <li class="list-group-item"
+                                            ng-repeat="coop in student_ctrl.student.coops">
+                                            <p>{{coop.company_name}}
+                                                <button type="button" 
+                                                class="btn btn-sm btn-danger pull-right"
+                                                ng-click="student_ctrl.remove_coop(coop)">
+                                                Delete
+                                                </button>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Application Domain
+                                </div>
+                                <div class="panel-body">
+                                    <p>Application domain content here</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Senior Project
+                                </div>
+                                <div class="panel-body">
+                                    {{student_ctrl.student.senior_project}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
 </div>
