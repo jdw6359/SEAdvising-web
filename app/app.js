@@ -103,14 +103,23 @@ angular
         }
       })
       .when('/students/new', {
-        templateUrl: 'app/views/student_new.html',
+        templateUrl: 'app/views/student_form.html',
         controller: 'StudentNewController',
-        controllerAs: 'student_new_ctrl',
+        controllerAs: 'student_form_ctrl',
         data: {
           requiresAuthentication: true,
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
-      })      
+      })
+      .when('/students/:id/edit', {
+        templateUrl: 'app/views/student_form.html',
+        controller: 'StudentEditController',
+        controllerAs: 'student_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
       .when('/students', {
         templateUrl: 'app/views/student_list.html',
         controller: 'StudentListController',

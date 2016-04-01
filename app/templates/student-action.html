@@ -14,6 +14,11 @@ breaks the "btn-group" class in "/views/student_list.html"
 <ul class="dropdown-menu"
 	aria-labeled-by="actionsDropdown{{student.id}}">
 	<li>
+		<a ng-href="#/students/{{student.id}}/edit">
+			Edit Student
+		</a>
+	</li>
+	<li>
 		<a ng-href="#/students/{{student.id}}/audits/new">
 			Log Audit
 		</a>

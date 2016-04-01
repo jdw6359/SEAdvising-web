@@ -16,6 +16,7 @@ app.controller('EmailVerificationController', require('./email_verification'));
 app.controller('PasswordResetController', require('./password_reset'))
 app.controller('StudentListController', require('./student_list'));
 app.controller('StudentController', require('./student'));
+app.controller('StudentEditController', require('./student_edit'));
 app.controller('StudentNewController', require('./student_new'));
 
 //isolate controllers

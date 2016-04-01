@@ -1,28 +1,28 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h1>New Student Form</h1>
-		<form name="newStudentForm" ng-submit="student_new_ctrl.submit()">
+		<h1>{{student_form_ctrl.formTitle}}</h1>
+		<form name="newStudentForm" ng-submit="student_form_ctrl.submit()">
 			<div class="row">
 				<div class="form-group col-md-4">
 					<label for="firstName">First Name:</label>
 					<input type="text"
 						id="firstName"
 						class="form-control"
-						ng-model="student_new_ctrl.student.first_name" />
+						ng-model="student_form_ctrl.student.first_name" />
 				</div>
 				<div class="form-group col-md-2">
 					<label for="middleName">Middle Initial:</label>
 					<input type="text"
 						id="middleName"
 						class="form-control"
-						ng-model="student_new_ctrl.student.middle_name" />
+						ng-model="student_form_ctrl.student.middle_name" />
 				</div>
 				<div class="form-group col-md-6">
 					<label for="lastName">Last Name:</label>
 					<input type="text"
 						id="lastName"
 						class="form-control"
-						ng-model="student_new_ctrl.student.last_name" />
+						ng-model="student_form_ctrl.student.last_name" />
 				</div>
 			</div>
 			<div class="row">
@@ -31,16 +31,15 @@
 					<input type="text"
 						id="email"
 						class="form-control"
-						ng-model="student_new_ctrl.student.email"
+						ng-model="student_form_ctrl.student.email"
 						placeholder="email@rit.edu" />
 				</div>
 				<div class="form-group col-md-6">
 					<label for="advisor">Advisor:</label>
 					<select id="advisor"
 						class="form-control"
-						ng-model="student_new_ctrl.student.advisor_id"
-						ng-options="advisor.id as advisor.first_name + ' ' +  advisor.last_name for
-						advisor in student_new_ctrl.advisors" />
+						ng-model="student_form_ctrl.student.advisor_id"
+						ng-options="advisor.id as advisor.first_name + ' ' +  advisor.last_name for advisor in student_form_ctrl.advisors" />
 				</div>
 			</div>
 			<div class="row">
@@ -49,14 +48,14 @@
 					<input type="text"
 						id="firstEnrolledTerm"
 						class="form-control"
-						ng-model="student_new_ctrl.student.first_enrolled_term" />
+						ng-model="student_form_ctrl.student.first_enrolled_term" />
 				</div>
 				<div class="form-group col-md-6">
 					<label for="expectedGraduation">Expected Graduation:</label>
 					<input type="text"
 						id="expectedGraduation"
 						class="form-control"
-						ng-model="student_new_ctrl.student.expected_graduation" />
+						ng-model="student_form_ctrl.student.expected_graduation" />
 				</div>
 			</div>
 			<div class="row">
@@ -64,22 +63,22 @@
 					<label for="status">Status</label>
 					<select id="status"
 						class="form-control"
-						ng-model="student_new_ctrl.student.status"
+						ng-model="student_form_ctrl.student.status"
 						ng-options="status for status
-							in student_new_ctrl.student_statuses" />
+							in student_form_ctrl.studentStatuses" />
 				</div>
 				<div class="form-group col-md-3">
 					<label for="type">Type</label>
 					<select id="type"
 						class="form-control"
-						ng-model="student_new_ctrl.student.student_type"
+						ng-model="student_form_ctrl.student.student_type"
 						ng-options="type for type
-							in student_new_ctrl.student_types" />
+							in student_form_ctrl.studentTypes" />
 				</div>
 				<div class="form-group col-md-3">
 					<label for="com_sub_plan">Com. Sub Plan?</label>
 					<input type="checkbox"
-						ng-model="student_new_ctrl.student.com_sub_plan"/>
+						ng-model="student_form_ctrl.student.com_sub_plan"/>
 				</div>
 			</div>
 			<div class="row">
@@ -87,17 +86,17 @@
 					<label for="cop_in">Change of Program In?</label>
 					<input type="checkbox"
 						id="cop_in"
-						ng-model="student_new_ctrl.student.cop_in" />
+						ng-model="student_form_ctrl.student.cop_in" />
 				</div>
 				<div class="form-group col-md-6"
-					ng-if="student_new_ctrl.student.cop_in">
+					ng-if="student_form_ctrl.student.cop_in">
 					<label for="cop_in_effective_term">
 						COP In Effective Term
 					</label>
 					<input type="text"
 						id="cop_in_effective_term"
 						class="form-control"
-						ng-model="student_new_ctrl.student.cop_in_effective_term"/>
+						ng-model="student_form_ctrl.student.cop_in_effective_term"/>
 				</div>
 			</div>
 			<div class="row">

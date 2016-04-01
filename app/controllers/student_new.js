@@ -8,11 +8,12 @@ function StudentNewController($http, $location, StudentFactory, AdvisorFactory){
 
 	vm.student = {
 		com_sub_plan: false,
-		status: "Active",
-		student_type: "FR" 
+		status: 'Active',
+		student_type: 'FR' 
 	};
-	vm.student_types = ["FR", "TR"];
-	vm.student_statuses = ["Active", "Inactive", "COP", "Suspended", "CRP", "LOA"];
+	vm.formTitle = 'New Student Form'
+	vm.studentTypes = ['FR', 'TR'];
+	vm.studentStatuses = ['Active', 'Inactive', 'COP', 'Suspended', 'CRP', 'LOA'];
 
 	vm.advisors = AdvisorFactory.query();
 
