@@ -1,18 +1,21 @@
 'use strict'
 
-CopOutNewController.$inject = ['$location', '$routeParams', 'StudentFactory']
+CopOutNewController.$inject = ['StudentFactory', '$location', '$routeParams']
 
-function CopOutNewController($location, $routeParams, StudentFactory){
+function CopOutNewController(StudentFactory, $location, $routeParams){
 
 	var vm = this;
+
+	vm.formTitle = 'New Change Of Program Out Form';
 	vm.codes = ['A','B','C','D','E','F'];
-	vm.application_statuses = ['Applied', 'Accepted', 'Rejected'];
+	vm.applicationStatuses = ['Applied', 'Accepted', 'Rejected'];
+
+	var studentId = $routeParams.id;
 
 	vm.submit = function(){
-		var student_id = $routeParams.id;
-		StudentFactory.add_cop_out({id: student_id}, 
+		StudentFactory.add_cop_out({id: studentId}, 
 			{cop_out: vm.cop_out}, function(res){
-			$location.path('/students/' + student_id);
+			$location.path('/students/' + studentId);
 		})
 	}
 }

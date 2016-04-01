@@ -148,9 +148,18 @@ angular
         }
       })
       .when('/students/:id/cop_out/new', {
-        templateUrl: 'app/views/cop_out_new.html',
+        templateUrl: 'app/views/cop_out_form.html',
         controller: 'CopOutNewController',
-        controllerAs: 'cop_out_new_ctrl',
+        controllerAs: 'cop_out_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+      .when('/students/:id/cop_out/edit', {
+        templateUrl: 'app/views/cop_out_form.html',
+        controller: 'CopOutEditController',
+        controllerAs: 'cop_out_form_ctrl',
         data: {
           requiresAuthentication: true,
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]

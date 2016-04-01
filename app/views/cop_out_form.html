@@ -1,23 +1,23 @@
 <sea-student-header></sea-student-header>
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h1>Change of Program Out Form</h1>
-		<form name="cop_out_form" ng-submit="cop_out_new_ctrl.submit()">
+		<h1>{{cop_out_form_ctrl.formTitle}}</h1>
+		<form name="cop_out_form" ng-submit="cop_out_form_ctrl.submit()">
 			<div class="row">
 				<div class="col-md-6 form-group">
 					<label for="new_plan">New Plan</label>
 					<input type="text"
 						id="new_plan"
 						class="form-control"
-						ng-model="cop_out_new_ctrl.cop_out.new_plan" />
+						ng-model="cop_out_form_ctrl.cop_out.new_plan" />
 				</div>
 				<div class="col-md-6 form-group">
 					<label for="code">Code</label>
 					<select id="code"
 						class="form-control"
-						ng-model="cop_out_new_ctrl.cop_out.code"
+						ng-model="cop_out_form_ctrl.cop_out.code"
 						ng-options="code for code
-							in cop_out_new_ctrl.codes" />
+							in cop_out_form_ctrl.codes" />
 				</div>
 			</div>
 			<div class="row">
@@ -26,15 +26,15 @@
 					<input type="text"
 						id="effective_term"
 						class="form-control"
-						ng-model="cop_out_new_ctrl.cop_out.effective_term" />
+						ng-model="cop_out_form_ctrl.cop_out.effective_term" />
 				</div>
 				<div class="col-md-6 form-group">
 					<label for="application_status">Application Status</label>
 					<select id="application_status"
 						class="form-control"
-						ng-model="cop_out_new_ctrl.cop_out.application_status"
+						ng-model="cop_out_form_ctrl.cop_out.application_status"
 						ng-options="status for status
-							in cop_out_new_ctrl.application_statuses" />
+							in cop_out_form_ctrl.applicationStatuses" />
 				</div>
 			</div>
 			<div class="row">

@@ -37,6 +37,10 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
             url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
             method: 'POST'
         },
+        edit_cop_out: {
+            url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
+            method: 'PUT'
+        },
         getLabels: {
             url: BASE_API_ENDPOINT + '/students/:id/labels',
             method: 'GET',
