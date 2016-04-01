@@ -18,6 +18,7 @@ app.controller('StudentListController', require('./student_list'));
 app.controller('StudentController', require('./student'));
 app.controller('StudentEditController', require('./student_edit'));
 app.controller('StudentNewController', require('./student_new'));
+app.controller('StudentLabelsController', require('./student_labels'));
 
 //isolate controllers
 app.controller('StudentSearchController', require('./student_search'));

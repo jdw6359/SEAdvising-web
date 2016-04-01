@@ -1,10 +1,7 @@
-<span class="label label-danger"
-	ng-if="label_display_ctrl.student.red_flag_label">
-	Red Flag
-</span>
-<span class="label label-success"
-	ng-if="label_display_ctrl.student.event_attendee_label">
-	Event Attendee
+<span class="label label-md"
+	ng-repeat="label in label_display_ctrl.student.labels"
+	style="background-color:{{label.color}};">
+	{{label.name}}
 </span>
 <div ng-if="label_display_ctrl.detail" 
 	class="btn btn-default"

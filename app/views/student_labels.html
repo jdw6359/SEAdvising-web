@@ -1,0 +1,38 @@
+<sea-student-header>
+</sea-student-header>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h3>Student Label Configuration</h3>
+		<p>You may add or remove the labels from the student<p>
+		<hr>
+		<div class="row"
+			ng-repeat="label in student_labels_ctrl.labels">
+			<div class="col-md-4">
+				<h4>
+					<span class="label"
+						style="background-color:{{label.color}}">
+						{{label.name}}
+					</span>
+				</h4>
+			</div>
+			<div class="col-md-6">
+				{{label.description}}
+			</div>
+			<div class="col-md-2">
+				<button class="btn btn-success"
+					ng-click="student_labels_ctrl.addLabel(label.id)">
+					Add Label
+				</button>
+				<button class="btn btn-danger"
+					ng-click="student_labels_ctrl.removeLabel(label.id)">
+					Remove Label
+				</button>
+			</div>
+		</div>
+
+		<p>Labels</p>
+		{{student_labels_ctrl.labels}}
+		<p>Student Labels</p>
+		{{student_labels_ctrl.studentLabels}}
+	</div>
+</div>

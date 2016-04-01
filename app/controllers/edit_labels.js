@@ -1,6 +1,6 @@
 'use strict'
 
-EditLabelsController.$inject = ['StudentFactory', 'student', '$uibModalInstance']
+EditLabelsController.$inject = ['StudentFactory', 'LabelsFactory', 'student', '$uibModalInstance']
 function EditLabelsController(StudentFactory, student, $uibModalInstance) {
 	console.log("Edit Labels Controller Loaded...")
 

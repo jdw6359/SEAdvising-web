@@ -165,6 +165,15 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
+      .when('/students/:id/labels', {
+        templateUrl: 'app/views/student_labels.html',
+        controller: 'StudentLabelsController',
+        controllerAs: 'student_labels_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor]
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

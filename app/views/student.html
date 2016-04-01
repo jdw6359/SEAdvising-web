@@ -13,20 +13,27 @@
         </div>
         <div class="col-md-9">
             <div class="panel panel-default">
-                <div class="panel-heading clearfix">
-                    <strong>
-                        {{student_ctrl.student.last_name}},
-                        {{student_ctrl.student.first_name}}
-                    </strong>
-                    <sea-label-display ng-if="isAuthorized(userRoles.advisor)"
-                        student="student_ctrl.student"
-                        detail="true">
-                    </sea-label-display>                        
-                    <div class="pull-right dropdown">
-                        <sea-student-action
-                            student="student_ctrl.student"
-                            title="'Actions'">
-                        </sea-student-action>
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <strong>
+                                {{student_ctrl.student.last_name}},
+                                {{student_ctrl.student.first_name}}
+                            </strong>
+                            <span ng-if="isAuthorized(userRoles.advisor)"
+                                class="label label-md"
+                                ng-repeat="label in student_ctrl.student.labels"
+                                style="background-color:{{label.color}};">
+                                {{label.name}}
+                            </span>                        
+                        </div>
+                        <div class="col-md-4">
+                            <sea-student-action
+                                class="pull-right"
+                                student="student_ctrl.student"
+                                title="'Actions'">
+                            </sea-student-action>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body">

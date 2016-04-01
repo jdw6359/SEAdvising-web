@@ -36,6 +36,19 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
         add_cop_out: {
             url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
             method: 'POST'
+        },
+        getLabels: {
+            url: BASE_API_ENDPOINT + '/students/:id/labels',
+            method: 'GET',
+            isArray: true
+        },
+        addLabel: {
+            url: BASE_API_ENDPOINT + '/students/:student_id/labels/:label_id',
+            method: 'POST'
+        },
+        removeLabel: {
+            url: BASE_API_ENDPOINT + '/students/:student_id/labels/:label_id',
+            method: 'DELETE'
         }
     });
 }
