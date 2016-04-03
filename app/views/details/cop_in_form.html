@@ -1,0 +1,34 @@
+<sea-student-header></sea-student-header>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+	<h1>{{cop_in_form_ctrl.formTitle}}</h1>
+		<form name="cop_in_form" ng-submit="cop_in_form_ctrl.submit()">
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<label for="effective_term">
+						Effective Term
+					</label>
+					<input type="text" id="effective_term"
+						class="form-control"
+						ng-model="cop_in_form_ctrl.cop_in.effective_term" />
+				</div>
+				<div class="col-md-6 form-group">
+					<label for="former_plan">
+						Former Plan
+					</label>
+					<input type="text" id="former_plan"
+						class="form-control"
+						ng-model="cop_in_form_ctrl.cop_in.former_plan" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<button type="submit"
+						class="btn btn-primary btn-block">
+						Submit
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

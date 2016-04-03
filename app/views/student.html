@@ -83,14 +83,28 @@
                             ng-if="student_ctrl.student.cop_in">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    Change of Program In
+                                    <div class="row">
+                                        <div class="col-md-4 pull-right">
+                                            <a class="pull-right btn btn-default"
+                                                ng-href="#/students/{{student_ctrl.student.id}}/cop_in/edit">
+                                                Edit
+                                            </a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <strong>Change of Program In</strong>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <i>This student has applied for a change of program into the Software Engineering Department</i>
                                     <hr/>
                                     <p>
                                         <b>Effective Term:</b>
-                                        {{student_ctrl.student.cop_in_effective_term}}
+                                        {{student_ctrl.student.cop_in.effective_term}}
+                                    </p>
+                                    <p>
+                                        <b>Former Plan:</b>
+                                        {{student_ctrl.student.cop_in.former_plan}}
                                     </p>
                                 </div>
                             </div>
@@ -99,7 +113,17 @@
                             ng-if="student_ctrl.student.cop_out">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    Change of Program Out
+                                    <div class="row">
+                                        <div class="col-md-4 pull-right">
+                                            <a class="btn btn-default pull-right"
+                                                ng-href="#/students/{{student_ctrl.student.id}}/cop_out/edit">
+                                                Edit
+                                            </a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <strong>Change of Program Out</strong>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <i>This student has applied for a change of program out of the Software Engineering Department</i>

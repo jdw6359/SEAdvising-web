@@ -33,6 +33,14 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
     		url: BASE_API_ENDPOINT + '/students/:id/audits',
     		method: 'POST'
     	},
+        add_cop_in: {
+            url: BASE_API_ENDPOINT + '/students/:id/cop_ins',
+            method: 'POST'
+        },
+        edit_cop_in: {
+            url: BASE_API_ENDPOINT + '/students/:id/cop_ins',
+            method: 'PUT'
+        },
         add_cop_out: {
             url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
             method: 'POST'

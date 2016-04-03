@@ -148,7 +148,7 @@ angular
         }
       })
       .when('/students/:id/cop_out/new', {
-        templateUrl: 'app/views/cop_out_form.html',
+        templateUrl: 'app/views/details/cop_out_form.html',
         controller: 'CopOutNewController',
         controllerAs: 'cop_out_form_ctrl',
         data: {
@@ -157,9 +157,27 @@ angular
         }
       })
       .when('/students/:id/cop_out/edit', {
-        templateUrl: 'app/views/cop_out_form.html',
+        templateUrl: 'app/views/details/cop_out_form.html',
         controller: 'CopOutEditController',
         controllerAs: 'cop_out_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+      .when('/students/:id/cop_in/new', {
+        templateUrl: 'app/views/details/cop_in_form.html',
+        controller: 'CopInNewController',
+        controllerAs: 'cop_in_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+      .when('/students/:id/cop_in/edit', {
+        templateUrl: 'app/views/details/cop_in_form.html',
+        controller: 'CopInEditController',
+        controllerAs: 'cop_in_form_ctrl',
         data: {
           requiresAuthentication: true,
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
