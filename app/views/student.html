@@ -1,7 +1,4 @@
 <div class="container">
-    <div class="page-header">
-        <h1>Student Detail</h1>
-    </div>
     <div class="row">
         <div class="col-md-3">
             <sea-transaction-log
@@ -181,7 +178,17 @@
                         <div class="col-md-6">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    Co-Op   
+                                    <div class="row">
+                                        <div class="col-md-4 pull-right">
+                                            <a class="btn btn-default pull-right"
+                                                ng-href="#/students/{{student_ctrl.student.id}}/coops/new">
+                                                Add <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p><strong>Co-Op</strong></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <i ng-show="!student_ctrl.student.coops.length">
@@ -191,11 +198,10 @@
                                         <li class="list-group-item"
                                             ng-repeat="coop in student_ctrl.student.coops">
                                             <p>{{coop.company_name}}
-                                                <button type="button" 
-                                                class="btn btn-sm btn-danger pull-right"
-                                                ng-click="student_ctrl.remove_coop(coop)">
-                                                Delete
-                                                </button>
+                                                <a class="btn btn-sm btn-default pull-right"
+                                                    ng-href="#/students/{{student_ctrl.student.id}}/coops/{{coop.id}}/edit">
+                                                    Edit
+                                                </a>
                                             </p>
                                         </li>
                                     </ul>

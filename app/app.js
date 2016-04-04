@@ -183,10 +183,19 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
-      .when('/students/:id/coop/new', {
-        templateUrl: 'app/views/coop_new.html',
+      .when('/students/:id/coops/new', {
+        templateUrl: 'app/views/details/coop_form.html',
         controller: 'CoopNewController',
-        controllerAs: 'coop_new_ctrl',
+        controllerAs: 'coop_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+      .when('/students/:id/coops/:coop_id/edit', {
+        templateUrl: 'app/views/details/coop_form.html',
+        controller: 'CoopEditController',
+        controllerAs: 'coop_form_ctrl',
         data: {
           requiresAuthentication: true,
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]

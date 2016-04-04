@@ -25,10 +25,6 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
             url: BASE_API_ENDPOINT + '/students/:id/notes',
             method: 'POST'
         },
-        add_coop: {
-    		url: BASE_API_ENDPOINT + '/students/:id/coops',
-    		method: 'POST'
-    	},
     	add_audit: {
     		url: BASE_API_ENDPOINT + '/students/:id/audits',
     		method: 'POST'
@@ -48,6 +44,10 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
         edit_cop_out: {
             url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
             method: 'PUT'
+        },
+        add_coop: {
+            url: BASE_API_ENDPOINT + '/students/:id/coops',
+            method: 'POST'
         },
         getLabels: {
             url: BASE_API_ENDPOINT + '/students/:id/labels',

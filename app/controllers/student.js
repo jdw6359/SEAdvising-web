@@ -1,11 +1,12 @@
 'use strict';
 
-//TODO: Remove $http from injection
-StudentController.$inject = ['$scope',
-	'$routeParams',
-	'CoopFactory',
-	'StudentFactory'];
-function StudentController($scope, $routeParams, CoopFactory, StudentFactory){
+StudentController.$inject = [
+    'StudentFactory',
+    '$scope',
+    '$routeParams'
+];
+
+function StudentController(StudentFactory, $scope, $routeParams){
 
     var vm = this;
     var student_id = $routeParams.id
