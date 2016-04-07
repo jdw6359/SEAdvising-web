@@ -45,6 +45,14 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
             url: BASE_API_ENDPOINT + '/students/:id/cop_outs',
             method: 'PUT'
         },
+        add_senior_project: {
+            url: BASE_API_ENDPOINT + '/students/:id/senior_projects',
+            method: 'POST'
+        },
+        edit_senior_project: {
+            url: BASE_API_ENDPOINT + '/students/:id/senior_projects',
+            method: 'PUT'
+        },
         add_coop: {
             url: BASE_API_ENDPOINT + '/students/:id/coops',
             method: 'POST'

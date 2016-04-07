@@ -1,0 +1,81 @@
+<sea-student-header></sea-student-header>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>{{senior_project_form_ctrl.formTitle}}</h1>
+		{{senior_project_form_ctrl.senior_project}}
+		<form name="senior_project_form" ng-submit="senior_project_form_ctrl.submit()">
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<label for="status">
+						Status:
+					</label>
+					<select id="status"
+						class="form-control"
+						ng-model="senior_project_form_ctrl.senior_project.status"
+						ng-options="status for status in senior_project_form_ctrl.statusOptions" />
+				</div>
+				<div class="col-md-6 form-group">
+					<label for="date_performed">Date Performed</label>
+					<p class="input-group">
+						<input type="datetime"
+							id="date_performed"
+							class="form-control"
+							uib-datepicker-popup="MM/dd/yyyy"
+							is-open="senior_project_form_ctrl.grad_app_submitted_datepicker_opened"
+							ng-model="senior_project_form_ctrl.senior_project.grad_app_submitted"
+							placeholder="MM/dd/yyyy"
+						/>
+						<span class="input-group-btn">
+							<button type="button"
+								class="btn btn-default"
+								ng-click="senior_project_form_ctrl.open_grad_app_submitted_picker()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 form-group">
+					<label for="end_term">
+						End Term
+					</label>
+					<input type="text" id="end_term"
+						class="form-control"
+						ng-model="senior_project_form_ctrl.senior_project.end_term" />
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="cert_term_projected">
+						Cert. Term Projected
+					</label>
+					<input type="text" id="cert_term_projected"
+						class="form-control"
+						ng-model="senior_project_form_ctrl.senior_project.cert_term_projected" />
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="cert_term_certified">
+						Cert. Term Certified
+					</label>
+					<input type="text" id="cert_term_certified"
+						class="form-control"
+						ng-model="senior_project_form_ctrl.senior_project.cert_term_certified" />
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="ceremony_term">
+						Ceremony Term
+					</label>
+					<input type="text" id="ceremony_term"
+						class="form-control"
+						ng-model="senior_project_form_ctrl.senior_project.ceremony_term" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-success btn-block">
+						Submit
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

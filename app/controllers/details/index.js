@@ -10,3 +10,5 @@ app.controller('CopInNewController', require('./cop_in_new'));
 app.controller('CopInEditController', require('./cop_in_edit'));
 app.controller('CopOutNewController', require('./cop_out_new'));
 app.controller('CopOutEditController', require('./cop_out_edit'));
+app.controller('SeniorProjectNewController', require('./senior_project_new'));
+app.controller('SeniorProjectEditController', require('./senior_project_edit'));

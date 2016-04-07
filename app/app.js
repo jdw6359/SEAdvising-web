@@ -183,6 +183,24 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
+      .when('/students/:id/senior_project/new', {
+        templateUrl: 'app/views/details/senior_project_form.html',
+        controller: 'SeniorProjectNewController',
+        controllerAs: 'senior_project_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+      .when('/students/:id/senior_project/edit', {
+        templateUrl: 'app/views/details/senior_project_form.html',
+        controller: 'SeniorProjectEditController',
+        controllerAs: 'senior_project_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
       .when('/students/:id/coops/new', {
         templateUrl: 'app/views/details/coop_form.html',
         controller: 'CoopNewController',
