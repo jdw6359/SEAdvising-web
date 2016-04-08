@@ -219,12 +219,47 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="panel panel-info">
+                            <div class="panel panel-info" ng-if="student_ctrl.student.senior_project">
                                 <div class="panel-heading">
-                                    Senior Project
+                                    <div class="row">
+                                        <div class="col-md-4 pull-right">
+                                            <a class="btn btn-default pull-right"
+                                                ng-href="#/students/{{student_ctrl.student.id}}/senior_project/edit">
+                                                Edit
+                                            </a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <strong>
+                                                Senior Project
+                                            </strong>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
-                                    {{student_ctrl.student.senior_project}}
+                                    <p>
+                                        <b>Status:</b>
+                                        {{student_ctrl.student.senior_project.status}}
+                                    </p>
+                                    <p>
+                                        <b>End Term:</b>
+                                        {{student_ctrl.student.senior_project.end_term}}
+                                    </p>
+                                    <p>
+                                        <b>Cert Term Projected:</b>
+                                        {{student_ctrl.student.senior_project.cert_term_projected}}
+                                    </p>
+                                    <p>
+                                        <b>Cert Term Certified:</b>
+                                        {{student_ctrl.student.senior_project.cert_term_certified}}
+                                    </p>
+                                    <p>
+                                        <b>Ceremony Term:</b>
+                                        {{student_ctrl.student.senior_project.ceremony_term}}
+                                    </p>
+                                    <p>
+                                        <b>Grad App. Submitted Date</b>
+                                        {{student_ctrl.student.senior_project.grad_app_submitted_date | date: 'medium'}}
+                                    </p>
                                 </div>
                             </div>
                         </div>

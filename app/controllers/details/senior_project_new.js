@@ -3,9 +3,9 @@
 SeniorProjectNewController.$inject = ['StudentFactory', '$routeParams', '$location'];
 function SeniorProjectNewController(StudentFactory, $routeParams, $location) {
 	var vm = this;
-
 	var studentId = $routeParams.id;
 
+	vm.formTitle = 'New Senior Project Form';
 	vm.statusOptions = ['Accepted', 'Rejected'];
 	vm.grad_app_submitted_datepicker_opened = false;
 
