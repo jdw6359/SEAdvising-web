@@ -78,9 +78,19 @@
                     <div class="panel panel-default"
                         ng-if="student_ctrl.student.program_detail">
                         <div class="panel-heading">
-                            <strong>
-                                {{student_ctrl.student.program_detail.academic_plan}}
-                            </strong>
+                            <div class="row">
+                                <div class="col-md-2 pull-right">
+                                    <a class="btn btn-default btn-block"
+                                        ng-href="#/students/{{student_ctrl.student.id}}/program_detail/edit">
+                                        Edit
+                                    </a>
+                                </div>
+                                <div class="col-md-10">
+                                    <strong>
+                                        {{student_ctrl.student.program_detail.academic_plan}}
+                                    </strong>
+                                </div>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div class="row">

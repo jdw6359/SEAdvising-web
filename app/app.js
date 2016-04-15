@@ -147,6 +147,24 @@ angular
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
         }
       })
+      .when('/students/:id/program_detail/new', {
+        templateUrl: 'app/views/details/program_detail_form.html',
+        controller: 'ProgramDetailNewController',
+        controllerAs: 'program_detail_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+      .when('/students/:id/program_detail/edit', {
+        templateUrl: 'app/views/details/program_detail_form.html',
+        controller: 'ProgramDetailEditController',
+        controllerAs: 'program_detail_form_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
       .when('/students/:id/cop_out/new', {
         templateUrl: 'app/views/details/cop_out_form.html',
         controller: 'CopOutNewController',

@@ -1,0 +1,90 @@
+<sea-student-header></sea-student-header>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+	<h1>{{program_detail_form_ctrl.formTitle}}</h1>
+		<form name="program_detail_form" ng-submit="program_detail_form_ctrl.submit()">
+			<div class="row">
+				<div class="col-md-12 form-group">
+					<label for="academic_plan">
+						Academic Plan
+					</label>
+					<input type="text" id="academic_plan"
+						class="form-control"
+						ng-model="program_detail_form_ctrl.program_detail.academic_plan" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<label for="application_domain">
+						Application Domain
+					</label>
+					<input type="text" id="application_domain"
+						class="form-control"
+						ng-model="program_detail_form_ctrl.program_detail.application_domain" />
+				</div>
+				<div class="col-md-6 form-group">
+					<label for="application_domain_submitted_date">
+						Submitted
+					</label>
+					<p class="input-group">
+						<input type="datetime"
+							id="application_domain_submitted_date"
+							class="form-control"
+							uib-datepicker-popup="MM/dd/yyyy"
+							is-open="program_detail_form_ctrl.application_domain_submitted_datepicker_open"
+							ng-model="program_detail_form_ctrl.program_detail.application_domain_submitted_date"
+							placeholder="MM/dd/yyyy"
+						/>
+						<span class="input-group-btn">
+							<button type="button"
+								class="btn btn-default"
+								ng-click="program_detail_form_ctrl.application_domain_submitted_datepicker_open = true">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<label for="minor">
+						Minor
+					</label>
+					<input type="text" id="minor"
+						class="form-control"
+						ng-model="program_detail_form_ctrl.program_detail.minor" />
+				</div>
+				<div class="col-md-6 form-group">
+					<label for="minor_submitted_date">
+						Submitted
+					</label>
+					<p class="input-group">
+						<input type="datetime"
+							id="minor_submitted_date"
+							class="form-control"
+							uib-datepicker-popup="MM/dd/yyyy"
+							is-open="program_detail_form_ctrl.minor_submitted_datepicker_open"
+							ng-model="program_detail_form_ctrl.program_detail.minor_submitted_date"
+							placeholder="MM/dd/yyyy"
+						/>
+						<span class="input-group-btn">
+							<button type="button"
+								class="btn btn-default"
+								ng-click="program_detail_form_ctrl.minor_submitted_datepicker_open = true">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<button type="submit"
+						class="btn btn-primary btn-block">
+						Submit
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

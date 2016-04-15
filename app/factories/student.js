@@ -29,6 +29,14 @@ function StudentFactory($resource, BASE_API_ENDPOINT) {
     		url: BASE_API_ENDPOINT + '/students/:id/audits',
     		method: 'POST'
     	},
+        add_program_detail: {
+            url: BASE_API_ENDPOINT + '/students/:id/program_details',
+            method: 'POST'
+        },
+        edit_program_detail: {
+            url: BASE_API_ENDPOINT + '/students/:id/program_details',
+            method: 'PUT'
+        },
         add_cop_in: {
             url: BASE_API_ENDPOINT + '/students/:id/cop_ins',
             method: 'POST'
