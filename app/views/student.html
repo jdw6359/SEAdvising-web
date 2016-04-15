@@ -75,6 +75,31 @@
                             </p>
                         </div>             
                     </div>
+                    <div class="alert alert-success no-padding-bottom">
+                        <h4>{{student_ctrl.student.program_detail.academic_plan}}</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Application Domain</strong>
+                                <p>
+                                    {{student_ctrl.student.program_detail.application_domain}}
+                                </p>
+                                <strong>Submitted</strong>
+                                <p>
+                                    {{student_ctrl.student.program_detail.application_domain_submitted_date | date: 'medium'}}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Minor</strong>
+                                <p>
+                                    {{student_ctrl.student.program_detail.minor}}
+                                </p>
+                                <strong>Submited</strong>
+                                <p>
+                                    {{student_ctrl.student.program_detail.minor_submitted_date | date: 'medium'}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6"
                             ng-if="student_ctrl.student.cop_in">
@@ -205,16 +230,6 @@
                                             </p>
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-info">
-                                <div class="panel-heading">
-                                    Application Domain
-                                </div>
-                                <div class="panel-body">
-                                    <p>Application domain content here</p>
                                 </div>
                             </div>
                         </div>
