@@ -75,30 +75,47 @@
                             </p>
                         </div>             
                     </div>
-                    <div class="alert alert-success no-padding-bottom">
-                        <h4>
-                            {{student_ctrl.student.program_detail.academic_plan}}
-                        </h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <strong>Application Domain</strong>
-                                <p>
-                                    {{student_ctrl.student.program_detail.application_domain}}
-                                </p>
-                                <strong>Submitted</strong>
-                                <p>
-                                    {{student_ctrl.student.program_detail.application_domain_submitted_date | date: 'medium'}}
-                                </p>
+                    <div class="panel panel-default"
+                        ng-if="student_ctrl.student.program_detail">
+                        <div class="panel-heading">
+                            <strong>
+                                {{student_ctrl.student.program_detail.academic_plan}}
+                            </strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Application Domain</strong>
+                                    <p>
+                                        {{student_ctrl.student.program_detail.application_domain}}
+                                    </p>
+                                    <strong>Submitted</strong>
+                                    <p>
+                                        {{student_ctrl.student.program_detail.application_domain_submitted_date | date: 'medium'}}
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Minor</strong>
+                                    <p>
+                                        {{student_ctrl.student.program_detail.minor}}
+                                    </p>
+                                    <strong>Submited</strong>
+                                    <p>
+                                        {{student_ctrl.student.program_detail.minor_submitted_date | date: 'medium'}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <strong>Minor</strong>
-                                <p>
-                                    {{student_ctrl.student.program_detail.minor}}
-                                </p>
-                                <strong>Submited</strong>
-                                <p>
-                                    {{student_ctrl.student.program_detail.minor_submitted_date | date: 'medium'}}
-                                </p>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning"
+                        ng-if="!student_ctrl.student.program_detail">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fa fa-warning"></i>
+                            </div>
+                            <div class="col-md-11">
+                                This student has no <strong>Program Details</strong>.
+                                Please add <strong>Program Details</strong> using the Action Menu on the right. 
                             </div>
                         </div>
                     </div>
