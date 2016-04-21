@@ -3,6 +3,8 @@
 ApplicationController.$inject = ['$scope', '$cookies', '$location', 'USER_ROLES', 'AuthService'];
 function ApplicationController($scope, $cookies, $location, USER_ROLES, AuthService){
 
+	console.log('application controller hit');
+
 	$scope.currentUser = null;
 	$scope.userRoles = USER_ROLES;
 	$scope.authToken = AuthService.authToken;

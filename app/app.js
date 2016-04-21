@@ -19,7 +19,7 @@ angular
     require('angular-animate'),
     require('angular-cookies'),
     require('angular-resource'),
-    require('angular-route'),
+    require('angular-ui-router'),
     require('angular-touch'),
     require('angular-loading-bar'),
     require('angular-ui-bootstrap'),
@@ -40,6 +40,104 @@ angular
     advisor: 'Advisor',
     worker: 'Worker'
   })
+  .config(configure)
+  .run(start);
+
+configure.$inject = ['$stateProvider', '$urlRouterProvider'];
+function configure($stateProvider, $urlRouterProvider) {
+  console.log('configure started');
+  $urlRouterProvider.when('', '/');
+
+  $urlRouterProvider.otherwise(
+      function($injector, $location) {
+          var $state = $injector.get('$state');
+          console.log($state);
+          $state.go('sea.not-found');
+          return $location.path();
+      }
+  );
+
+  $stateProvider
+    .state('sea', {
+      abstract: true,
+      template: '<ui-view />'
+    })
+      .state('sea.home', {
+        url: '/',
+        templateUrl: 'app/views/main.html',
+        controller: 'MainController',
+        controllerAs: 'main_ctrl',
+        data: {
+          requiresAuthentication: false
+        }
+      })
+      .state('sea.login', {
+        url: '/login',
+        templateUrl: 'app/views/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login_ctrl',
+        data: {
+          requiresAuthentication: false
+        }
+      })
+
+/*
+  $httpProvider.defaults.useXDomain = true;
+  // change this when authentication is added (below)
+  $httpProvider.defaults.withCredentials = false;                       // change this later!!!!!!!!!!!!
+  // change this when authentication is added (above)
+  delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  $httpProvider.defaults.headers.common["Accept"] = "application/json";
+  $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+*/
+}
+
+start.$inject = ['$rootScope', '$state', '$http', '$cookies', '$location'];
+function start($rootScope, $state, $http, $cookies, $location) {
+  console.log('start started');
+
+  $rootScope.$on(
+    '$stateChangeStart',
+    function (event, toState) {
+      console.log('state change start')
+      console.log('new state - requires authentication: ');
+      console.log(toState.data.requiresAuthentication);
+      console.log(toState.url);
+      
+
+      if(toState.data.requiresAuthentication) {
+        console.log('requires auth, going to login state');
+        event.preventDefault();
+        $state.go('sea.login');
+      }
+    }
+  );
+}
+
+
+
+/*
+start.$inject = ['$rootScope', '$state', 'Session'];
+function start($rootScope, $state, Session) {
+    $rootScope.$on(
+        '$stateChangeStart',
+        function (event, toState) {
+            if (Session.employee && toState.data && toState.data.roles) {
+                var hasRole = toState.data.roles.some(function (role) {
+                    return Session.employee.hasRole(role);
+                });
+
+                if (!hasRole) {
+                    event.preventDefault();
+                    $state.go('wsa.unauthorized');
+                }
+            }
+        }
+    );
+}
+*/
+
+/*
   .config(function ($routeProvider, $httpProvider, USER_ROLES) {
     $routeProvider
       .when('/', {
@@ -250,14 +348,9 @@ angular
         redirectTo: '/'
       });
 
-      $httpProvider.defaults.useXDomain = true;
-      // change this when authentication is added (below)
-      $httpProvider.defaults.withCredentials = false;                       // change this later!!!!!!!!!!!!
-      // change this when authentication is added (above)
-      delete $httpProvider.defaults.headers.common["X-Requested-With"];
-      $httpProvider.defaults.headers.common["Accept"] = "application/json";
-      $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
   })
+  */
+  /*
   .run(function($rootScope, $http, $cookies, $location, AuthService){
     $rootScope.$on('$routeChangeStart', function(event, next){
 
@@ -279,6 +372,7 @@ angular
       $http.defaults.headers.common["Auth-Token"] = $cookies.get("authToken");
     })
   });
+  */
   
 require('./controllers');
 require('./directives');

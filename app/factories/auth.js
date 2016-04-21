@@ -9,7 +9,6 @@ function AuthService($http, Session, BASE_URL){
 		return Session.authToken;
 	};
 
-
 	//TODO: do not include auth_token as parameter, 
 	//rely on global http header assignment
 	authService.restore = function(authToken){

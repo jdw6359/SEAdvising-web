@@ -3,20 +3,28 @@
 //currently no need to inject anything
 Session.$inject = ['$cookies'];
 function Session($cookies){
-	this.create = function(authToken, userRole){
+	var vm = this;
+
+	vm.authToken = null;
+	vm.userRole = null;
+
+	vm.create = create;
+	vm.destroy = destroy;
+
+	function create(authToken, userRole){
 		
 		$cookies.put("authToken", authToken);
 
-		this.authToken = authToken;
-		this.userRole = userRole;
+		vm.authToken = authToken;
+		vm.userRole = userRole;
 		//fill with other session data here
 	};
 
-	this.destroy = function(){
+	function destroy(){
 		$cookies.remove("authToken");
 
-		this.authToken = null;
-		this.userRole = null
+		vm.authToken = null;
+		vm.userRole = null
 	}
 }
 
