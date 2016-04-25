@@ -1,9 +1,11 @@
 'use strict';
 
-LoginController.$inject = ['$scope', '$rootScope', 'Session', 'AUTH_EVENTS', 'AuthService'];
-function LoginController($scope, $rootScope, Session, AUTH_EVENTS, AuthService){
+LoginController.$inject = ['$scope', '$rootScope', 'AUTH_EVENTS', 'AuthService'];
+function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
 
 	var vm = this;
+
+	console.log('login controller invoked');
 
 	vm.credentials = {
 		email: "",
@@ -15,10 +17,6 @@ function LoginController($scope, $rootScope, Session, AUTH_EVENTS, AuthService){
 		AuthService.login(vm.credentials).then(function() {
 			
 			console.log("auth service returned successful in login.js");
-
-			console.log('attaching to session...');
-			// attach returned user to session
-			console.log('done attaching to session...');
 
 			console.log('broadcasting success event...');
 			$rootScope.$broadcast(AUTH_EVENTS.SUCCESS);

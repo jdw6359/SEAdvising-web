@@ -1,54 +1,86 @@
 'use strict';
 
-AuthService.$inject = ['$http', 'Session', 'BASE_API_ENDPOINT'];
-function AuthService($http, Session, BASE_URL){
-	
-	var authService = {};
+AuthService.$inject = ['$http', 'Session', '$rootScope', '$q', 'AUTH_EVENTS', 'BASE_API_ENDPOINT'];
+function AuthService($http, Session, $rootScope, $q, AUTH_EVENTS, BASE_API_ENDPOINT){
+    
+    var authService = {};
+    var deferred = $q.defer();
 
-	authService.authToken = function(){
-		return Session.authToken;
-	};
+    authService.verify = function(){
+        console.log('auth service verify invoked');
+        if(Session.user){
+            console.log('session.user is valid, resolving session...');
+            deferred.resolve(Session);
+        }else{
+            console.log('session.user is NOT valid, need to restore session');
+            authService.restore()
+                .then(success)
+                .catch(failure);
+        }
 
-	//TODO: do not include auth_token as parameter, 
-	//rely on global http header assignment
-	authService.restore = function(authToken){
-		return $http
-			.post(BASE_URL + '/sessions/restore', {'authToken': authToken})
-			.then(function(res){
-				Session.create(res.data.auth_token,
-					res.data.user_role);
-				return res.data.user
-			});
-	}
+        function success(response){
+            console.log('auth service verify success invoked...');
+            console.log(response);
 
-	authService.login = function(credentials){
-		return $http
-			.post(BASE_URL + '/sessions', credentials)
-			.then(function(res){
-				var data = res.data
-				Session.create(data.auth_token,
-					data.user_role, data.user);
-			});
-	};
+            var data = res.data;
+            Session.create(data.auth_token,
+            data.user_role, data.user);
 
-	authService.logout = function(){
-		Session.destroy();
-	}
+            console.log('created session in auth service verify...');
+            deferred.resolve(Session);
+        }
 
-	authService.isAuthenticated = function(){
-		return !!Session.authToken;
-	}
+        function failure(response) {
+            console.log('auth service verify failure invoked...');
+            console.log(response);
 
-	authService.isAuthorized = function(authorizedRoles){
-		
-		if(!angular.isArray(authorizedRoles)){
-			authorizedRoles = [authorizedRoles];
-		}
-		return (authService.isAuthenticated() &&
-			authorizedRoles.indexOf(Session.userRole) !== -1);
-	};
+            $rootScope.$broadcast(AUTH_EVENTS.FAILED);
+        }
+    }
 
-	return authService;
+
+    //TODO: do not include auth_token as parameter, 
+    //rely on global http header assignment
+    authService.restore = function(){
+        console.log('auth service restore invoked...');
+        console.log('auth token: ');
+        var authToken = $cookies.get('authToken');
+
+        return $http.post(BASE_API_ENDPOINT + '/sessions/restore', {'authToken': authToken});
+    }
+
+    authService.login = function(credentials){
+        return $http
+            .post(BASE_API_ENDPOINT + '/sessions', credentials)
+            .then(function(res){
+                var data = res.data;
+                Session.create(data.auth_token,
+                    data.user_role, data.user);
+            });
+    };
+
+/*
+    authService.logout = function(){
+        Session.destroy();
+    }
+
+
+    authService.isAuthenticated = function(){
+        return !!Session.authToken;
+    }
+
+    authService.isAuthorized = function(authorizedRoles){
+        
+        if(!angular.isArray(authorizedRoles)){
+            authorizedRoles = [authorizedRoles];
+        }
+        return (authService.isAuthenticated() &&
+            authorizedRoles.indexOf(Session.userRole) !== -1);
+    };
+*/
+
+
+    return authService;
 }
 
 module.exports = AuthService;

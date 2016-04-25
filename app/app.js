@@ -54,8 +54,7 @@ function configure($stateProvider, $urlRouterProvider) {
       }
   );
 
-  $stateProvider
-    
+  $stateProvider  
     .state('sea', {
       abstract: true,
       template: '<ui-view />',
@@ -66,12 +65,6 @@ function configure($stateProvider, $urlRouterProvider) {
         'Session': SessionResolver
       }
     })
-      .state('sea.home', {
-        url: '/',
-        templateUrl: 'app/views/main.html',
-        controller: 'MainController',
-        controllerAs: 'main_ctrl'
-      })
       .state('sea.login', {
         url: '/login',
         templateUrl: 'app/views/login.html',
@@ -79,7 +72,14 @@ function configure($stateProvider, $urlRouterProvider) {
         controllerAs: 'login_ctrl',
         data: {
           requiresAuthentication: false
-        }
+        },
+        resolve: {}
+      })
+      .state('sea.home', {
+        url: '/',
+        templateUrl: 'app/views/main.html',
+        controller: 'MainController',
+        controllerAs: 'main_ctrl'
       })
 
 /*
@@ -103,6 +103,8 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
 
       // Perform authorization check here
       console.log('state change interceptor hit!');
+      console.log('to state: ');
+      console.log(toState);
 
       if(toState.data.requiresAuthentication) {
         console.log('state requires authentication...');
@@ -112,6 +114,7 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
           console.log("state requires authentication, but session.user is null");
           console.log('redirecting...');
           event.preventDefault();          
+          
           // maybe change this to $scope since this controller is
           // where the $on listeneres are defined
           $rootScope.$broadcast(AUTH_EVENTS.FAILED);
@@ -119,6 +122,16 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
       }
     }
   );
+
+  $rootScope.$on('$stateChangeError', function(event, toState, error) {
+    console.log('state change error encountered...');
+    console.log('to state: ');
+    console.log(toState);
+    console.log('event: ');
+    console.log(event);
+    console.log('error: ');
+    console.log(error);
+  })
 
   $rootScope.$on(AUTH_EVENTS.SUCCESS, function() {
     console.log('[broadcast listener] Auth Success, redirect to main state');
@@ -131,9 +144,9 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
   })
 }
 
-SessionResolver.$inject = ['Session'];
-function SessionResolver(Session) {
-  return Session;
+SessionResolver.$inject = ['AuthService'];
+function SessionResolver(AuthService) {
+  //return AuthService.verify().promise;
   //return Session.verify().promise;
 }
 /*
