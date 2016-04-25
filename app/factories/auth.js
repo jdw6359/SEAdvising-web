@@ -25,9 +25,9 @@ function AuthService($http, Session, BASE_URL){
 		return $http
 			.post(BASE_URL + '/sessions', credentials)
 			.then(function(res){
-				Session.create(res.data.auth_token,
-					res.data.user_role);
-				return res.data.user;
+				var data = res.data
+				Session.create(data.auth_token,
+					data.user_role, data.user);
 			});
 	};
 

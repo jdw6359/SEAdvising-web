@@ -1,7 +1,7 @@
 'use strict';
 
-LoginController.$inject = ['$scope', '$rootScope', 'AUTH_EVENTS', 'AuthService'];
-function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
+LoginController.$inject = ['$scope', '$rootScope', 'Session', 'AUTH_EVENTS', 'AuthService'];
+function LoginController($scope, $rootScope, Session, AUTH_EVENTS, AuthService){
 
 	var vm = this;
 
@@ -12,21 +12,20 @@ function LoginController($scope, $rootScope, AUTH_EVENTS, AuthService){
 
 	vm.login = function(){
 
-		AuthService.login(vm.credentials).then(function(user){
+		AuthService.login(vm.credentials).then(function() {
 			
 			console.log("auth service returned successful in login.js");
 
+			console.log('attaching to session...');
+			// attach returned user to session
+			console.log('done attaching to session...');
 
-
-//			$scope.setCurrentUser(user);
-
-			//TODO: Refactor this hardcoded redirection
-//			$location.path('/')
+			console.log('broadcasting success event...');
+			$rootScope.$broadcast(AUTH_EVENTS.SUCCESS);
+			console.log('done broadcasting success event...');
 		}, function(){
-
-			// TODO: Broadcast failed event
-			console.log("auth service returned failure in login.js");
-			//TODO: refactor into hardcoded redirection
+			// Broadcast Auth Failure event for app listener to handle
+			$rootScope.$broadcast(AUTH_EVENTS.FAILED);
 		});
 
 	};

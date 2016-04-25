@@ -5,26 +5,35 @@ Session.$inject = ['$cookies', '$q', '$rootScope'];
 function Session($cookies, $q, $rootScope){
 	var vm = this;
 
-	vm.authToken = null;
 	vm.userRole = null;
+	vm.user = null;
 
+	vm.isAuthenticated = isAuthenticated;
 	vm.create = create;
 	vm.destroy = destroy;
 
-	function create(authToken, userRole){
-		
+	function isAuthenticated() {
+		console.log("is authenticated...");
+		return vm.user != null;
+	}
+
+	function create(authToken, userRole, user){
+		console.log('session creating...');
+
 		$cookies.put("authToken", authToken);
 
-		vm.authToken = authToken;
 		vm.userRole = userRole;
-		//fill with other session data here
+		vm.user = user;
+
+		console.log("session: ");
+		console.log(vm);
 	};
 
 	function destroy(){
 		$cookies.remove("authToken");
 
-		vm.authToken = null;
-		vm.userRole = null
+		vm.userRole = null;
+		vm.user = null;
 	}
 }
 

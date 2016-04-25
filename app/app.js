@@ -28,12 +28,9 @@ angular
   ])
   .constant('BASE_API_ENDPOINT', 'http://localhost:3000/api/v1')
   .constant('AUTH_EVENTS', {
-    loginSuccess: 'auth-login-success',
-    loginFailed: 'auth-login-failed',
-    logoutSuccess: 'auth-logout-success',
-    sessionTimeout: 'auth-session-timeout',
-    notAuthenticated: 'auth-not-authenticated',
-    notAuthorized: 'auth-not-authorized'
+    'SUCCESS': 'AUTH_SUCCESS',
+    'FAILED': 'AUTH_FAILED',
+    'UNAUTHORIZED': 'AUTH_UNAUTHORIZED'
   })
   .constant('USER_ROLES', {
     all: '*',
@@ -96,8 +93,8 @@ function configure($stateProvider, $urlRouterProvider) {
 */
 }
 
-start.$inject = ['$rootScope', '$state', '$http', '$cookies', '$location'];
-function start($rootScope, $state, $http, $cookies, $location) {
+start.$inject = ['$rootScope', '$state', 'Session', 'AUTH_EVENTS'];
+function start($rootScope, $state, Session, AUTH_EVENTS) {
   console.log('start started');
 
   $rootScope.$on(
@@ -108,12 +105,30 @@ function start($rootScope, $state, $http, $cookies, $location) {
       console.log('state change interceptor hit!');
 
       if(toState.data.requiresAuthentication) {
-        console.log('requires auth, going to login state');
-        event.preventDefault();
-        $state.go('sea.login');
+        console.log('state requires authentication...');
+        console.log('state...');
+        console.log(toState.data);
+        if(!Session.isAuthenticated()){
+          console.log("state requires authentication, but session.user is null");
+          console.log('redirecting...');
+          event.preventDefault();          
+          // maybe change this to $scope since this controller is
+          // where the $on listeneres are defined
+          $rootScope.$broadcast(AUTH_EVENTS.FAILED);
+        }
       }
     }
   );
+
+  $rootScope.$on(AUTH_EVENTS.SUCCESS, function() {
+    console.log('[broadcast listener] Auth Success, redirect to main state');
+    $state.go('sea.home');
+  });
+
+  $rootScope.$on(AUTH_EVENTS.FAILED, function() {
+    console.log('[broadcast listener] Auth Failed, redirect to login');
+    $state.go('sea.login');
+  })
 }
 
 SessionResolver.$inject = ['Session'];
