@@ -58,18 +58,22 @@ function configure($stateProvider, $urlRouterProvider) {
   );
 
   $stateProvider
+    
     .state('sea', {
       abstract: true,
-      template: '<ui-view />'
+      template: '<ui-view />',
+      data: {
+        requiresAuthentication: true
+      },
+      resolve: {
+        'Session': SessionResolver
+      }
     })
       .state('sea.home', {
         url: '/',
         templateUrl: 'app/views/main.html',
         controller: 'MainController',
-        controllerAs: 'main_ctrl',
-        data: {
-          requiresAuthentication: false
-        }
+        controllerAs: 'main_ctrl'
       })
       .state('sea.login', {
         url: '/login',
@@ -99,11 +103,9 @@ function start($rootScope, $state, $http, $cookies, $location) {
   $rootScope.$on(
     '$stateChangeStart',
     function (event, toState) {
-      console.log('state change start')
-      console.log('new state - requires authentication: ');
-      console.log(toState.data.requiresAuthentication);
-      console.log(toState.url);
-      
+
+      // Perform authorization check here
+      console.log('state change interceptor hit!');
 
       if(toState.data.requiresAuthentication) {
         console.log('requires auth, going to login state');
@@ -114,29 +116,11 @@ function start($rootScope, $state, $http, $cookies, $location) {
   );
 }
 
-
-
-/*
-start.$inject = ['$rootScope', '$state', 'Session'];
-function start($rootScope, $state, Session) {
-    $rootScope.$on(
-        '$stateChangeStart',
-        function (event, toState) {
-            if (Session.employee && toState.data && toState.data.roles) {
-                var hasRole = toState.data.roles.some(function (role) {
-                    return Session.employee.hasRole(role);
-                });
-
-                if (!hasRole) {
-                    event.preventDefault();
-                    $state.go('wsa.unauthorized');
-                }
-            }
-        }
-    );
+SessionResolver.$inject = ['Session'];
+function SessionResolver(Session) {
+  return Session;
+  //return Session.verify().promise;
 }
-*/
-
 /*
   .config(function ($routeProvider, $httpProvider, USER_ROLES) {
     $routeProvider

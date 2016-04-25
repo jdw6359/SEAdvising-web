@@ -1,8 +1,8 @@
 'use strict';
 
 //currently no need to inject anything
-Session.$inject = ['$cookies'];
-function Session($cookies){
+Session.$inject = ['$cookies', '$q', '$rootScope'];
+function Session($cookies, $q, $rootScope){
 	var vm = this;
 
 	vm.authToken = null;

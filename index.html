@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="sea" ng-controller="ApplicationController as application_ctrl">
+  <body ng-app="sea">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -25,25 +25,25 @@
       <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a ng-if="currentUser" href="#/">
+            <a href="#/">
               <img class="logo" src="img/logo.jpg" />
             </a>
-            <img ng-if="!currentUser" class="logo" src="img/logo.jpg" />
+            <img class="logo" src="img/logo.jpg" />
           </div>
           <div class="collapse navbar-collapse"
               id="js-navbar-collapse">
-            <ul ng-if="currentUser" class="nav navbar-nav">
-              <li ng-if="isAuthorized(userRoles.advisor)">
+            <ul class="nav navbar-nav">
+              <li>
                 <a href="#/admin">Admin</a>
               </li>
-              <li ng-if="isAuthorized(userRoles.worker)">
+              <li>
                 <a href="#/worker">Worker</a>
               </li>
               <li>
                 <a href="#/students">Students</a>
               </li>
             </ul>
-            <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
               <li ng-controller="StudentSearchController as student_search_ctrl"
                 class="top-space">
                 <input type="text"
@@ -58,8 +58,7 @@
                   </i> No Results Found
                 </div>
               </li>
-              <li class="dropdown" ng-if="isAuthorized(userRoles.advisor)"
-                ng-cloak>
+              <li class="dropdown" ng-cloak>
                 <a class="dropdown-toggle" data-toggle="dropdown"
                     role="button" aria-haspopup="true"
                     aria-expanded="false">

@@ -2,8 +2,6 @@
 
 var app = require('angular').module('sea');
 
-app.controller('ApplicationController', require('./application'));
-
 require('./details');
 require('./settings');
 
