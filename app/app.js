@@ -84,6 +84,12 @@ function configure($stateProvider, $urlRouterProvider, $httpProvider) {
           controller: 'MainController',
           controllerAs: 'main_ctrl'
         })
+        .state('sea.app.students', {
+          url: '/students',
+          templateUrl: 'app/views/student-list.html',
+          controller: 'StudentListController',
+          controllerAs: 'student_list_ctrl'
+        })
 
 
   $httpProvider.defaults.useXDomain = true;
@@ -147,10 +153,8 @@ function start($rootScope, $state, $cookies, $http, Session, AUTH_EVENTS) {
     $state.go('sea.login');
   });
 }
-
 /*
-  .config(function ($routeProvider, $httpProvider, USER_ROLES) {
-    $routeProvider
+
       .when('/', {
         templateUrl: 'app/views/main.html',
         controller: 'MainController',
@@ -168,6 +172,20 @@ function start($rootScope, $state, $cookies, $http, Session, AUTH_EVENTS) {
           requiresAuthentication: false
         }
       })
+      .when('/students', {
+        templateUrl: 'app/views/student_list.html',
+        controller: 'StudentListController',
+        controllerAs: 'student_list_ctrl',
+        data: {
+          requiresAuthentication: true,
+          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
+        }
+      })
+*/
+
+/*
+  .config(function ($routeProvider, $httpProvider, USER_ROLES) {
+    $routeProvider
       .when('/email_verification', {
         templateUrl: 'app/views/email_verification.html',
         controller: 'EmailVerificationController', 
@@ -224,15 +242,6 @@ function start($rootScope, $state, $cookies, $http, Session, AUTH_EVENTS) {
         templateUrl: 'app/views/student_form.html',
         controller: 'StudentEditController',
         controllerAs: 'student_form_ctrl',
-        data: {
-          requiresAuthentication: true,
-          authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
-        }
-      })
-      .when('/students', {
-        templateUrl: 'app/views/student_list.html',
-        controller: 'StudentListController',
-        controllerAs: 'student_list_ctrl',
         data: {
           requiresAuthentication: true,
           authorizedRoles: [USER_ROLES.advisor, USER_ROLES.worker]
@@ -384,7 +393,8 @@ function start($rootScope, $state, $cookies, $http, Session, AUTH_EVENTS) {
     })
   });
   */
-  
+
+require('./components');
 require('./controllers');
 require('./directives');
 require('./filters');

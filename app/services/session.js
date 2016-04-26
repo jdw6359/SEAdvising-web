@@ -13,7 +13,6 @@ function Session($cookies, $q, $rootScope){
 	vm.destroy = destroy;
 
 	function isAuthenticated() {
-		console.log("checking is authenticated...");
 		return vm.user != null;
 	}
 
