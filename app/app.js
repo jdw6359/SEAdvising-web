@@ -60,9 +60,6 @@ function configure($stateProvider, $urlRouterProvider) {
       template: '<ui-view />',
       data: {
         requiresAuthentication: true
-      },
-      resolve: {
-        'Session': SessionResolver
       }
     })
       .state('sea.login', {
@@ -73,14 +70,20 @@ function configure($stateProvider, $urlRouterProvider) {
         data: {
           requiresAuthentication: false
         },
-        resolve: {}
+      })    
+      .state('sea.app', {
+        abstract: true,
+        template: '<ui-view />',
+        resolve: {
+          'Session': SessionResolver
+        }
       })
-      .state('sea.home', {
-        url: '/',
-        templateUrl: 'app/views/main.html',
-        controller: 'MainController',
-        controllerAs: 'main_ctrl'
-      })
+        .state('sea.app.home', {
+          url: '/',
+          templateUrl: 'app/views/main.html',
+          controller: 'MainController',
+          controllerAs: 'main_ctrl'
+        })
 
 /*
   $httpProvider.defaults.useXDomain = true;
@@ -106,6 +109,8 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
       console.log('to state: ');
       console.log(toState);
 
+      // TODO: Implement authorization check here
+/*
       if(toState.data.requiresAuthentication) {
         console.log('state requires authentication...');
         console.log('state...');
@@ -120,6 +125,7 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
           $rootScope.$broadcast(AUTH_EVENTS.FAILED);
         }
       }
+*/
     }
   );
 
@@ -135,7 +141,6 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
 
   $rootScope.$on(AUTH_EVENTS.SUCCESS, function() {
     console.log('[broadcast listener] Auth Success, redirect to main state');
-    $state.go('sea.home');
   });
 
   $rootScope.$on(AUTH_EVENTS.FAILED, function() {
@@ -144,11 +149,6 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
   })
 }
 
-SessionResolver.$inject = ['AuthService'];
-function SessionResolver(AuthService) {
-  //return AuthService.verify().promise;
-  //return Session.verify().promise;
-}
 /*
   .config(function ($routeProvider, $httpProvider, USER_ROLES) {
     $routeProvider
@@ -391,3 +391,12 @@ require('./directives');
 require('./filters');
 require('./services');
 require('./factories');
+
+SessionResolver.$inject = ['AuthService'];
+function SessionResolver(AuthService) {
+  console.log('session resolver hit');
+  //return $service('AuthService').verify().promise;
+  var promise = AuthService.verify().promise;
+  return promise;
+  //return Session.verify().promise;
+}

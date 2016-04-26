@@ -1,12 +1,13 @@
 'use strict';
 
-AuthService.$inject = ['$http', 'Session', '$rootScope', '$q', 'AUTH_EVENTS', 'BASE_API_ENDPOINT'];
-function AuthService($http, Session, $rootScope, $q, AUTH_EVENTS, BASE_API_ENDPOINT){
+AuthService.$inject = ['$http', '$cookies', 'Session', '$rootScope', '$q', 'AUTH_EVENTS', 'BASE_API_ENDPOINT'];
+function AuthService($http, $cookies, Session, $rootScope, $q, AUTH_EVENTS, BASE_API_ENDPOINT){
     
     var authService = {};
-    var deferred = $q.defer();
 
     authService.verify = function(){
+        var deferred = $q.defer();
+
         console.log('auth service verify invoked');
         if(Session.user){
             console.log('session.user is valid, resolving session...');
@@ -16,13 +17,14 @@ function AuthService($http, Session, $rootScope, $q, AUTH_EVENTS, BASE_API_ENDPO
             authService.restore()
                 .then(success)
                 .catch(failure);
+            console.log('auth service restore previously invoked...');
         }
 
         function success(response){
             console.log('auth service verify success invoked...');
             console.log(response);
 
-            var data = res.data;
+            var data = response.data;
             Session.create(data.auth_token,
             data.user_role, data.user);
 
@@ -35,7 +37,10 @@ function AuthService($http, Session, $rootScope, $q, AUTH_EVENTS, BASE_API_ENDPO
             console.log(response);
 
             $rootScope.$broadcast(AUTH_EVENTS.FAILED);
+            deferred.reject(response);
         }
+
+        return deferred;
     }
 
 
@@ -45,6 +50,7 @@ function AuthService($http, Session, $rootScope, $q, AUTH_EVENTS, BASE_API_ENDPO
         console.log('auth service restore invoked...');
         console.log('auth token: ');
         var authToken = $cookies.get('authToken');
+        console.log(authToken);
 
         return $http.post(BASE_API_ENDPOINT + '/sessions/restore', {'authToken': authToken});
     }

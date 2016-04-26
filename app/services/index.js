@@ -2,4 +2,4 @@
 
 var app = require('angular').module('sea');
 
-app.service('Session',require('./session.js'));
+app.service('Session', require('./session.js'));
