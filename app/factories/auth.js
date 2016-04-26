@@ -43,7 +43,6 @@ function AuthService($http, $cookies, Session, $rootScope, $q, AUTH_EVENTS, BASE
         return deferred;
     }
 
-
     //TODO: do not include auth_token as parameter, 
     //rely on global http header assignment
     authService.restore = function(){

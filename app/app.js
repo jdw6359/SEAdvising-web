@@ -40,8 +40,8 @@ angular
   .config(configure)
   .run(start);
 
-configure.$inject = ['$stateProvider', '$urlRouterProvider'];
-function configure($stateProvider, $urlRouterProvider) {
+configure.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
+function configure($stateProvider, $urlRouterProvider, $httpProvider) {
   console.log('configure started');
   $urlRouterProvider.when('', '/');
 
@@ -85,7 +85,7 @@ function configure($stateProvider, $urlRouterProvider) {
           controllerAs: 'main_ctrl'
         })
 
-/*
+
   $httpProvider.defaults.useXDomain = true;
   // change this when authentication is added (below)
   $httpProvider.defaults.withCredentials = false;                       // change this later!!!!!!!!!!!!
@@ -93,13 +93,11 @@ function configure($stateProvider, $urlRouterProvider) {
   delete $httpProvider.defaults.headers.common["X-Requested-With"];
   $httpProvider.defaults.headers.common["Accept"] = "application/json";
   $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-*/
+
 }
 
-start.$inject = ['$rootScope', '$state', 'Session', 'AUTH_EVENTS'];
-function start($rootScope, $state, Session, AUTH_EVENTS) {
-  console.log('start started');
-
+start.$inject = ['$rootScope', '$state', '$cookies', '$http', 'Session', 'AUTH_EVENTS'];
+function start($rootScope, $state, $cookies, $http, Session, AUTH_EVENTS) {
   $rootScope.$on(
     '$stateChangeStart',
     function (event, toState) {
@@ -126,6 +124,7 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
         }
       }
 */
+      $http.defaults.headers.common["Auth-Token"] = $cookies.get("authToken");
     }
   );
 
@@ -146,7 +145,7 @@ function start($rootScope, $state, Session, AUTH_EVENTS) {
   $rootScope.$on(AUTH_EVENTS.FAILED, function() {
     console.log('[broadcast listener] Auth Failed, redirect to login');
     $state.go('sea.login');
-  })
+  });
 }
 
 /*
