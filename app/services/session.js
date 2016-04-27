@@ -40,6 +40,7 @@ function Session($cookies, $q, $rootScope){
 	};
 
 	function destroy(){
+		console.log("session detroying...");
 		$cookies.remove("authToken");
 		vm.userRole = null;
 		vm.user = null;

@@ -1,6 +1,5 @@
-<div class="header" ng-controller="AuthenticationController as auth_ctrl">
-  <div class="navbar navbar-default navbar-static-top" ng-if="auth_ctrl.isAuthenticated()" 
-      role="navigation">
+<div class="header" ng-if="$ctrl.isAuthenticated()">
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <a href="#/">
@@ -30,7 +29,7 @@
             </div>
           </li>
           <li class="dropdown" ng-cloak>
-            <a ng-if="auth_ctrl.hasRole($ctrl.USER_ROLES.advisor)"
+            <a ng-if="$ctrl.hasRole($ctrl.USER_ROLES.advisor)"
                 class="dropdown-toggle" data-toggle="dropdown"
                 role="button" aria-haspopup="true"
                 aria-expanded="false">
@@ -51,13 +50,12 @@
             <a class="dropdown-toggle" data-toggle="dropdown"
                 role="button" aria-haspopup="true"
                 aria-expanded="false">
-                {{currentUser.first_name}}
-                {{currentUser.last_name}}
+
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a ng-click="logout()">Logout</a>
+                <a ng-click="$ctrl.logout()">Logout</a>
               </li>
             </ul>
           </li>

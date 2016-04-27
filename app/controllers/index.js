@@ -5,8 +5,6 @@ var app = require('angular').module('sea');
 require('./details');
 require('./settings');
 
-app.controller('AuthenticationController', require('./authentication'));
-
 //route / page specific controllers
 app.controller('AddNoteController', require('./add_note'));
 app.controller('MainController', require('./main'));

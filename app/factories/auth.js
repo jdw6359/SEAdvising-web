@@ -64,27 +64,6 @@ function AuthService($http, $cookies, Session, $rootScope, $q, AUTH_EVENTS, BASE
             });
     };
 
-/*
-    authService.logout = function(){
-        Session.destroy();
-    }
-
-
-    authService.isAuthenticated = function(){
-        return !!Session.authToken;
-    }
-
-    authService.isAuthorized = function(authorizedRoles){
-        
-        if(!angular.isArray(authorizedRoles)){
-            authorizedRoles = [authorizedRoles];
-        }
-        return (authService.isAuthenticated() &&
-            authorizedRoles.indexOf(Session.userRole) !== -1);
-    };
-*/
-
-
     return authService;
 }
 
