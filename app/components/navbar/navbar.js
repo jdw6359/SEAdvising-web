@@ -8,6 +8,12 @@ function NavbarController(USER_ROLES, Session, $state) {
     vm.isAuthenticated = isAuthenticated;
     vm.hasRole = hasRole;
     vm.logout = logout;
+    vm.fullName = fullName;
+
+    function fullName() {
+        var user = Session.user;
+        return user.last_name + ', ' + user.first_name;
+    }
 
     // Delegete authentication check to Session
     function isAuthenticated() {
