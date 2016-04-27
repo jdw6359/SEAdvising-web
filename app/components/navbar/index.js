@@ -1,4 +1,4 @@
 module.exports = {
-    controller: require('./navbar'),
+	controller: require('./navbar'),
     templateUrl: 'app/components/navbar/navbar.html'
 }

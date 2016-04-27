@@ -1,16 +1,13 @@
 'use strict';
 
-NavbarController.$inject = ['Session'];
-function NavbarController(Session) {
-	console.log('Navbar component controller loaded');
-
+NavbarController.$inject = ['USER_ROLES'];
+function NavbarController(USER_ROLES) {
+	
 	var vm = this;
 
-	vm.isAuthenticated = isAuthenticated;
+	vm.USER_ROLES = USER_ROLES;
 
-	function isAuthenticated() {
-		return Session.isAuthenticated();
-	}
+	console.log('navbar user roles: ');
+	console.log(vm.USER_ROLES);
 }
-
 module.exports = NavbarController;

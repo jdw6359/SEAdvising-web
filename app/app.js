@@ -45,6 +45,7 @@ function configure($stateProvider, $urlRouterProvider, $httpProvider) {
   console.log('configure started');
   $urlRouterProvider.when('', '/');
 
+  // TODO: Possibly refactor this
   $urlRouterProvider.otherwise(
       function($injector, $location) {
           var $state = $injector.get('$state');
